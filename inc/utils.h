@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:23:21 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/22 13:34:32 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/10/26 16:41:12 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,9 +19,8 @@
 float			ft_atof(char *str);
 
 /* utils_add.c */
-int				add_sphere(t_scene *scene, t_sphere *new_sphere);
-int				add_plane(t_scene *scene, t_plane *new_plane);
-int				add_cylinder(t_scene *scene, t_cylinder *new_cylinder);
+t_item			*add_last_obj(t_item *objs);
+t_item			*add_obj(t_item *objs, t_scene *scene);
 
 /* utils_exit.c */
 void			error_exit(t_scene *scene);
@@ -29,7 +28,7 @@ void			error_exit(t_scene *scene);
 /* utils_free.c */
 void			free_all(t_scene *scene);
 void			free_sphere(t_obj *obj);
-void			free_sphere(t_obj *obj);
+void			free_plane(t_obj *obj);
 void			free_cylinder(t_obj *obj);
 
 /* utils_parsing.c */

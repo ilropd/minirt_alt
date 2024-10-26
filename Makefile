@@ -6,7 +6,7 @@
 #    By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2024/10/23 15:23:21 by irozhkov         ###   ########.fr        #
+#    Updated: 2024/10/26 15:39:52 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,7 +44,7 @@ CHECK_FILES = checker_ambient checker checker_camera checker_cylinder \
 			  checker_plane checker_sphere checker_light check_limits
 #FIG_FILES = plane
 GEOM_FILES = vector vector_math vector_prod
-INIT_FILES = init_all init_figures init_unique
+INIT_FILES = init_all init_figures init_unique set_figures
 #INTERSEC_FILES = cylinder_intersection plane_intersection sphere_intersection
 PARS_FILES = parsing_gnl parsing_scene parsing_table
 #REND_FILES = events render render_init

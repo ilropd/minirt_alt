@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:34:41 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/24 15:48:18 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/10/26 17:51:00 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -78,9 +78,9 @@ int	main(int argc, char **argv)
 	arg_checker(argc, argv);
 	file_checker(argv);
 	init_scene(&scene);
-	/* FIX ALL BEHIND THE LINE */ 
 	if (parsing_scene(argv, &scene))
 		error_exit(&scene);
+/* FIX UNDER THE LINE */
 /*	render_init(&mrt, scene);
 	ray_tracing(&mrt);
 	mlx_loop(mrt.connection);

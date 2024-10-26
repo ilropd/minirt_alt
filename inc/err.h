@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:13:20 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/24 15:45:07 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/10/26 16:57:18 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,8 @@
 # define MEM_AMB "Memory allocation for ambient light failed\n"
 # define MEM_CAM "Memory allocation for camera failed\n"
 # define MEM_LIG "Memory allocation for light failed\n"
-
+# define MEM_SP "Memory allocation for sphere failed\n"
+# define MEM_PL "Memory allocation for plane failed\n"
+# define MEM_CY "Memory allocation for cylinder failed\n"
 
 #endif

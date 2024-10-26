@@ -6,81 +6,78 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/23 15:28:27 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/10/26 17:09:24 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
-/*
-int	init_cylinder(char **table, t_scene *scene)
-{    
-	t_cylinder	*cylinder;
-	t_vector	*center;
-	t_vector	*orient;
 
-	if (check_cylinder(table))
-		return (printf("Error\nWrong arguments for cylinder\n"), 1);
-	cylinder = (t_cylinder *)malloc(sizeof(t_cylinder));
-	if (!cylinder)    
-		return (printf("Error\nCylinder memory allocation failed\n"), 1);
-	cylinder->type = table[0];
-	center = new_vector(ft_atof(table[1]), ft_atof(table[2]), ft_atof(table[3]));
-	orient = new_vector(ft_atof(table[4]), ft_atof(table[5]), ft_atof(table[6]));
-	cylinder->center = center;
-	cylinder->orient = orient;
-	cylinder->diameter = ft_atof(table[7]);
-	cylinder->height = ft_atof(table[8]);
-	cylinder->r = ft_atoi(table[9]);
-	cylinder->g = ft_atoi(table[10]);
-	cylinder->b = ft_atoi(table[11]);
-	printf("Cylinder settings:\n\ttype: %s\n\tcenter: %f | %f | %f\n\torientation: %f | %f | %f\n\tdiameter: %f\n\theight: %f\n\tred: %d\n\tgreen: %d\n\tblue: %d\n", cylinder->type, cylinder->center->x, cylinder->center->y, cylinder->center->z, cylinder->orient->x, cylinder->orient->y, cylinder->orient->z, cylinder->diameter, cylinder->height, cylinder->r, cylinder->g, cylinder->b);
-	scene->cys_count++;
-	return (add_cylinder(scene, cylinder));
-}
-
-int	init_plane(char **table, t_scene *scene)
-{
-	t_plane		*plane;
-	t_vector	*center;
-	t_vector	*orient;
-
-	if (check_plane(table))
-		return (printf("Error\nWrong arguments for plane\n"), 1);
-	plane = (t_plane *)malloc(sizeof(t_plane));
-	if (!plane)
-		return (printf("Error\nPlain memory allocation failed\n"), 1);
-	plane->type = table[0];
-	center = new_vector(ft_atof(table[1]), ft_atof(table[2]), ft_atof(table[3]));
-	orient = new_vector(ft_atof(table[4]), ft_atof(table[5]), ft_atof(table[6]));
-	plane->center = center;
-	plane->orient = orient;
-	plane->r = ft_atoi(table[7]);
-	plane->g = ft_atoi(table[8]);
-	plane->b = ft_atoi(table[9]);
-	printf("Plane settings:\n\ttype: %s\n\tcenter: %f | %f | %f\n\torientation: %f | %f | %f\n\tred: %d\n\tgreen: %d\n\tblue: %d\n", plane->type, plane->center->x, plane->center->y, plane->center->z, plane->orient->x, plane->orient->y, plane->orient->z, plane->r, plane->g, plane->b);
-    scene->pls_count++;
-	return (add_plane(scene, plane));
-}
-
-int	init_sphere(char **table, t_scene *scene)
+int	init_sphere(t_scene *scene)
 {
 	t_sphere	*sphere;
-	t_vector	*center;	
+	t_item		*obj;
 
-	if (check_sphere(table))
-		return (printf("Error\nWrong arguments for sphere\n"), 1);
-	sphere = (t_sphere *)malloc(sizeof(t_sphere));
+	obj = add_obj(scene->objs, scene);
+	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
-		return (printf("Error\nSphere memory allocation failed\n"), 1);
-	sphere->type = table[0];
-	center = new_vector(ft_atof(table[1]), ft_atof(table[2]), ft_atof(table[3]));
-	sphere->center = center;
-	sphere->diameter = ft_atof(table[4]);
-	sphere->radius = sphere->diameter / 2;
-	sphere->r = ft_atoi(table[5]);
-	sphere->g = ft_atoi(table[6]);
-	sphere->b = ft_atoi(table[7]);
-	printf("Sphere settings:\n\ttype: %s\n\tcenter: %f | %f | %f\n\tdiameter: %f\n\tradius: %f\n\tred: %d\n\tgreen: %d\n\tblue: %d\n", sphere->type, sphere->center->x, sphere->center->y, sphere->center->z, sphere->diameter, sphere->radius, sphere->r, sphere->g, sphere->b);
-    scene->sps_count++;
-	return (add_sphere(scene, sphere));
-}*/
+		return (printf("%s%s", ERROR, MEM_SP), 1);
+	set_sphere(obj, sphere);
+	sphere->type = scene->table[0];
+	if (!sphere->type)
+		return (printf("%s%s", ERROR, MEM_SP), 1);
+	vector_set(&sphere->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
+    sphere->diameter = ft_atof(scene->table[4]);
+    sphere->radius = sphere->diameter / 2;
+    sphere->color[0] = ft_atoi(scene->table[5]);
+    sphere->color[1] = ft_atoi(scene->table[6]);
+    sphere->color[2] = ft_atoi(scene->table[7]);
+	printf("Sphere Initialized: Type: %s, Center: %f | %f | %f, Diameter: %f, Radius: %f, Color: (%u, %u, %u)\n", sphere->type, sphere->center.x, sphere->center.y, sphere->center.z, sphere->diameter, sphere->radius, sphere->color[0], sphere->color[1], sphere->color[2]);
+	return (0);
+}
+
+int	init_plane(t_scene *scene)
+{
+	t_plane	*plane;
+	t_item	*obj;
+
+	obj = add_obj(scene->objs, scene);
+	plane = malloc(sizeof(t_plane));
+	if (!plane)
+		return (printf("%s%s", ERROR, MEM_PL), 1);
+	set_plane(obj, plane);
+	plane->type = scene->table[0];
+	if (!plane->type)
+		return (printf("%s%s", ERROR, MEM_PL), 1);
+	vector_set (&plane->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
+    vector_set(&plane->orient, ft_atof(scene->table[4]), ft_atof(scene->table[5]), ft_atof(scene->table[6]));
+    plane->color[0] = ft_atoi(scene->table[7]);
+    plane->color[1] = ft_atoi(scene->table[8]);
+    plane->color[2] = ft_atoi(scene->table[9]);
+	printf("Plane Initialized: Type: %s, Center: %f | %f | %f, Orient: %f | %f | %f, Color: (%u, %u, %u)\n", plane->type, plane->center.x, plane->center.y, plane->center.z, plane->orient.x, plane->orient.y, plane->orient.z, plane->color[0], plane->color[1], plane->color[2]);
+    return (0);
+}
+
+int	init_cylinder(t_scene *scene)
+{
+	t_cylinder	*cylinder;
+	t_item		*obj;
+
+	obj = add_obj(scene->objs, scene);
+	cylinder = malloc(sizeof(t_cylinder));
+	if (!cylinder)
+		return (printf("%s%s", ERROR, MEM_CY), 1);
+	set_cylinder(obj, cylinder);
+	cylinder->type = scene->table[0];
+	if (!cylinder->type)
+		return (printf("%s%s", ERROR, MEM_CY), 1);
+	vector_set(&cylinder->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
+    vector_set(&cylinder->orient, ft_atof(scene->table[4]), ft_atof(scene->table[5]), ft_atof(scene->table[6]));
+    cylinder->diameter = ft_atof(scene->table[7]);
+	cylinder->radius = cylinder->diameter / 2;
+    cylinder->height = ft_atof(scene->table[8]);
+    cylinder->color[0] = ft_atoi(scene->table[9]);
+    cylinder->color[1] = ft_atoi(scene->table[10]);
+    cylinder->color[2] = ft_atoi(scene->table[11]);
+	printf("Cylinder Initialized: Type: %s, Center: %f | %f | %f, Orient: %f | %f | %f, Diameter: %f, Radius: %f, Height: %f, Color: (%u, %u, %u)\n", cylinder->type, cylinder->center.x, cylinder->center.y, cylinder->center.z, cylinder->orient.x, cylinder->orient.y, cylinder->orient.z, cylinder->diameter, cylinder->radius, cylinder->height, cylinder->color[0], cylinder->color[1], cylinder->color[2]);
+	return (0);
+}

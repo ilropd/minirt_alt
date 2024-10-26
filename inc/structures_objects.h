@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/22 13:33:08 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/10/26 17:08:45 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ typedef struct	s_cylinder
 	t_vector		orient;
 	double			diameter;
 	double			radius;
+	double			height;
 	unsigned int	color[3];
 }	t_cylinder;
 

@@ -1,37 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   utils_add.c                                        :+:      :+:    :+:   */
+/*   set_figures.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/09/19 14:51:47 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/26 15:38:56 by irozhkov         ###   ########.fr       */
+/*   Created: 2024/10/26 14:55:33 by irozhkov          #+#    #+#             */
+/*   Updated: 2024/10/26 16:55:37 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "utils.h"
+#include "minirt.h"
 
-t_item	*add_last_obj(t_item *objs)
+void	set_sphere(t_item *obj, t_sphere *sphere)
 {
-	if (!objs)
-		return (objs);
-	while (objs->next != NULL)
-		objs = objs->next;
-	return (objs);
+	obj->type.sp = sphere;
+	obj->free_obj = free_sphere;
 }
 
-t_item	*add_obj(t_item *objs, t_scene *scene)
+void	set_plane(t_item *obj, t_plane *plane)
 {
-	t_item	*result;
+	obj->type.pl = plane;
+	obj->free_obj = free_plane;
+}
 
-	result = ft_calloc(1, sizeof(t_item));
-	if (!result)
-		error_exit(scene);
-	result->next = NULL;
-	if (!objs)
-		scene->objs = result;
-	else
-		add_last_obj(objs)->next = result;
-	return (result);
+void	set_cylinder(t_item *obj, t_cylinder *cylinder)
+{
+	obj->type.cy = cylinder;
+	obj->free_obj = free_cylinder;
 }
