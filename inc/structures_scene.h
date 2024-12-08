@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/24 15:44:26 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:00:31 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,7 @@ typedef struct  s_item	t_item;
 
 # define WIDTH 600
 # define HEIGHT 600
+# define CORNER_THRESHOLD 20
 
 /* VECTOR STRUCTURES */
 
@@ -32,13 +33,13 @@ typedef struct s_vector
 	double	z;
 }	t_vector;
 
-typedef struct s_vplane
+typedef struct s_viewport
 {
 	float	width;
 	float	height;
 	float	x_pixel;
 	float	y_pixel;
-}	t_vplane;
+}	t_viewport;
 
 /* STRUCTURES FOR MLX AND RENDERING */
 
@@ -56,6 +57,8 @@ typedef struct s_mrt
 	char			*name;
 	void			*connection;
 	void			*window;
+	int				corner_type;
+	int				is_resizing;
 	unsigned int	color;
 	t_img			img;
 }	t_mrt;

@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:13:20 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/26 16:57:18 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:39:26 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,11 @@
 # define MEM_SP "Memory allocation for sphere failed\n"
 # define MEM_PL "Memory allocation for plane failed\n"
 # define MEM_CY "Memory allocation for cylinder failed\n"
+
+/* Errors of mlx */
+# define MLX_INIT "Memory allocation for mlx connection failed\n"
+# define MLX_WIN "Memory allocation for mlx window failed\n"
+# define MLX_WIN_ERR "Mlx window error\n"
+# define MLX_IMG "Memory allocation for mlx image failed\n"
 
 #endif

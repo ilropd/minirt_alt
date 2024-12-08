@@ -6,7 +6,7 @@
 #    By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2024/10/26 15:39:52 by irozhkov         ###   ########.fr        #
+#    Updated: 2024/10/26 19:34:02 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,7 +34,7 @@ LIBFT_DIR = Libft/
 MLX_DIR = minilibx-linux/
 OBJ_DIR = obj/
 PARS_DIR = parser/
-#REND_DIR = render/
+REND_DIR = render/
 SRC_DIR = src/
 UTILS_DIR = utils/
 
@@ -47,7 +47,7 @@ GEOM_FILES = vector vector_math vector_prod
 INIT_FILES = init_all init_figures init_unique set_figures
 #INTERSEC_FILES = cylinder_intersection plane_intersection sphere_intersection
 PARS_FILES = parsing_gnl parsing_scene parsing_table
-#REND_FILES = events render render_init
+REND_FILES = render#events render render_init
 UTILS_FILES = ft_atof utils_add utils_exit utils_free utils_parsing utils_str
 
 SRC_FILES+=$(MAIN)
@@ -57,7 +57,7 @@ SRC_FILES+=$(addprefix $(GEOM_DIR),$(GEOM_FILES))
 SRC_FILES+=$(addprefix $(INIT_DIR),$(INIT_FILES))
 #SRC_FILES+=$(addprefix $(INTERSEC_DIR),$(INTERSEC_FILES))
 SRC_FILES+=$(addprefix $(PARS_DIR),$(PARS_FILES))
-#SRC_FILES+=$(addprefix $(REND_DIR),$(REND_FILES))
+SRC_FILES+=$(addprefix $(REND_DIR),$(REND_FILES))
 SRC_FILES+=$(addprefix $(UTILS_DIR),$(UTILS_FILES))
 
 SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))

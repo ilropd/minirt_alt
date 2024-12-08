@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:34:32 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/23 15:16:20 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:14:12 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,7 @@
 
 # include "libft.h"
 # include "mlx.h"
+# include "X11/keysym.h"
 
 # include "check.h"
 # include "err.h"
@@ -41,15 +42,16 @@
 //# include "cylinder_intersection.h"
 
 /* render_init */
-//int	render_init(t_mrt *mrt, t_scene *scene);
+int		render_init(t_scene *scene);
+void	events(t_scene *scene);
 
 /* render.c */
 //void		ray_tracing(t_mrt *mrt);
 //t_vplane	*get_vplane(int width, int height, unsigned int fov);
 
 /* key_handler */
-//int	destroy_handler(t_mrt *mrt);
-//int	key_handler(int key, t_mrt *mrt);
+int	destroy_handler(t_scene *scene);
+int	key_handler(int key, t_scene *scene);
 //int	mouse_handler(int button, int x, int y,  t_mrt *mrt);
 
 #endif

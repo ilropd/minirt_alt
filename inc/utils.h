@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:23:21 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/26 16:41:12 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/12/07 16:34:32 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ t_item			*add_obj(t_item *objs, t_scene *scene);
 void			error_exit(t_scene *scene);
 
 /* utils_free.c */
+void			free_mlx(t_scene *scene);
 void			free_all(t_scene *scene);
 void			free_sphere(t_obj *obj);
 void			free_plane(t_obj *obj);

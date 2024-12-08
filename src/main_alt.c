@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:34:41 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/26 17:51:00 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/12/07 18:00:34 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,6 +71,36 @@ static void	init_scene(t_scene *scene)
 	scene->objs = NULL;
 }
 
+static int render_frame(t_scene *scene)
+{
+/*    // Placeholder: Fill the image with a color to see if rendering works
+    int color = 0x00FF00;  // For example, a green color
+    for (int y = 0; y < HEIGHT; y++)
+    {
+        for (int x = 0; x < WIDTH; x++)
+        {
+            mlx_pixel_put(scene->mrt.connection, scene->mrt.window, x, y, color);
+        }
+    }
+    return (0);*/
+
+	int color = 0x00FF00;  // Green color
+    char *pixels = mlx_get_data_addr(scene->image, &scene->bits_per_pixel, &scene->line_length, &scene->endian);
+
+    // Clear the image by filling it with the desired color
+    for (int y = 0; y < scene->height; y++) {
+        for (int x = 0; x < scene->width; x++) {
+            int pixel_index = (y * scene->line_length) + (x * (scene->bits_per_pixel / 8));
+            *(int *)(pixels + pixel_index) = color;
+        }
+    }
+
+    // Display the image on the window
+    mlx_put_image_to_window(scene->mrt.connection, scene->mrt.window, scene->image, 0, 0);
+    return (0);
+}
+
+
 int	main(int argc, char **argv)
 {
 	static t_scene	scene;
@@ -81,10 +111,13 @@ int	main(int argc, char **argv)
 	if (parsing_scene(argv, &scene))
 		error_exit(&scene);
 /* FIX UNDER THE LINE */
-/*	render_init(&mrt, scene);
-	ray_tracing(&mrt);
-	mlx_loop(mrt.connection);
-	clear_scene(scene);*/
-	free_all(&scene);
+	render_init(&scene);
+//	ray_tracing(&mrt);
+	mlx_loop_hook(scene.mrt.connection, render_frame, &scene);
+	events(&scene);
+    mlx_loop(scene.mrt.connection);
+//	mlx_loop(&scene.mrt.connection);
+//	clear_scene(scene);
+//	free_all(&scene);
 	return (0);
 }
