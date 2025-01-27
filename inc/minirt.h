@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:34:32 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/12/07 16:14:12 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/25 17:14:09 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@
 # include "X11/keysym.h"
 
 # include "check.h"
+# include "colors.h"
 # include "err.h"
 # include "init.h"
 # include "parsing.h"
@@ -37,17 +38,18 @@
 # include "utils.h"
 # include "vector.h"
 
-//# include "sphere_intersection.h"
-//# include "plane_intersection.h"
-//# include "cylinder_intersection.h"
+# include "intersections.h"
+# include "sphere_intersection.h"
+# include "plane_intersection.h"
+# include "cylinder_intersection.h"
 
 /* render_init */
 int		render_init(t_scene *scene);
 void	events(t_scene *scene);
 
-/* render.c */
-//void		ray_tracing(t_mrt *mrt);
-//t_vplane	*get_vplane(int width, int height, unsigned int fov);
+/* ray_tracing.c */
+void		ray_tracing(t_scene *scene);
+t_viewport	*get_viewport(int width, int height, t_scene *scene);
 
 /* key_handler */
 int	destroy_handler(t_scene *scene);

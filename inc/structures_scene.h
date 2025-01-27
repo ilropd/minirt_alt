@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/12/07 18:00:31 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/25 18:42:47 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct  s_item	t_item;
 # define WIDTH 600
 # define HEIGHT 600
 # define CORNER_THRESHOLD 20
+# define MAXFLOAT 3.402823466e+38F
 
 /* VECTOR STRUCTURES */
 
@@ -40,6 +41,17 @@ typedef struct s_viewport
 	float	x_pixel;
 	float	y_pixel;
 }	t_viewport;
+
+typedef struct s_ray
+{
+	t_vector	v_ray;
+	t_vector	ray_orgn;
+	double		ray_x;
+	double		ray_y;
+	int			hit;
+	int			dot_color;
+	float		dist_curr;
+}	t_ray;
 
 /* STRUCTURES FOR MLX AND RENDERING */
 
@@ -60,6 +72,8 @@ typedef struct s_mrt
 	int				corner_type;
 	int				is_resizing;
 	unsigned int	color;
+	double			angle_x;
+	double			angle_y;
 	t_img			img;
 }	t_mrt;
 

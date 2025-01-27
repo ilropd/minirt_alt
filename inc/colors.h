@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane_intersection.h                               :+:      :+:    :+:   */
+/*   colors.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 16:36:31 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 13:31:30 by irozhkov         ###   ########.fr       */
+/*   Created: 2024/12/12 16:12:31 by irozhkov          #+#    #+#             */
+/*   Updated: 2024/12/12 16:21:13 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_INTERSECTION_H
-# define PLANE_INTERSECTION_H
+#ifndef COLORS_H
+# define COLORS_H
 
 # include "minirt.h"
 
-void	plane_intersection(t_item *item, t_ray *ray);
-//void	plane_intersection(t_plane *plane, t_ray *ray);
+/* colors.c */
+int	average_colors(int col1, int col2);
 
 #endif

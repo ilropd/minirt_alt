@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/26 17:08:45 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/25 16:42:38 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,29 @@
 
 # include "structures_scene.h"
 
+typedef struct s_sp_vars
+{
+	float	a;
+	float	b;
+	float	c;
+	float	discr;
+	float	dist1;
+	float	dist2;
+}	t_sp_vars;
+
+typedef enum e_type_id
+{
+	SP,
+	PL,
+	CY,
+	NONE
+}	t_type_id;
+
 typedef struct s_sphere
 {
 	char			*type;
 	t_vector		center;
+	t_vector		cam_sphere;
 	double			diameter;
 	double			radius;
 	unsigned int	color[3];
@@ -29,6 +48,7 @@ typedef struct s_plane
 	char			*type;
 	t_vector		center;
 	t_vector		orient;
+	t_vector		cam_plane;
 	unsigned int	color[3];
 }	t_plane;
 
@@ -37,6 +57,7 @@ typedef struct	s_cylinder
 	char			*type;
 	t_vector		center;
 	t_vector		orient;
+	t_vector		cam_cylinder;
 	double			diameter;
 	double			radius;
 	double			height;
@@ -53,8 +74,10 @@ typedef union	u_obj
 
 typedef struct	s_item
 {
+	t_type_id		id;
 	t_obj			type;
 //	void			(*intersect)(t_obj *, t_ray *, t_item *);
+	void			(*intersect)(t_item *, t_ray *);
 //	void			(*trans)(t_obj *obj, t_sc *sc);
 	void			(*free_obj)(t_obj *obj);
 //	void			(*get_norm)(t_obj *, t_hit *, t_ray *);

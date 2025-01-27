@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/26 17:09:24 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/25 17:09:39 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,8 @@ int	init_sphere(t_scene *scene)
 	if (!sphere->type)
 		return (printf("%s%s", ERROR, MEM_SP), 1);
 	vector_set(&sphere->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
+	printf("cam x: %f, sphere x: %f\ncam y: %f, sphere y: %f\ncam z: %f, sphere z: %f\n", scene->cam.center.x, sphere->center.x, scene->cam.center.y, sphere->center.y, scene->cam.center.z, sphere->center.z);
+	vector_set(&sphere->cam_sphere, scene->cam.center.x - sphere->center.x, scene->cam.center.y - sphere->center.y, scene->cam.center.z - sphere->center.z);
     sphere->diameter = ft_atof(scene->table[4]);
     sphere->radius = sphere->diameter / 2;
     sphere->color[0] = ft_atoi(scene->table[5]);
@@ -50,6 +52,7 @@ int	init_plane(t_scene *scene)
 		return (printf("%s%s", ERROR, MEM_PL), 1);
 	vector_set (&plane->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
     vector_set(&plane->orient, ft_atof(scene->table[4]), ft_atof(scene->table[5]), ft_atof(scene->table[6]));
+	vector_set(&plane->cam_plane, scene->cam.center.x - plane->center.x, scene->cam.center.y - plane->center.y, scene->cam.center.z - plane->center.z);
     plane->color[0] = ft_atoi(scene->table[7]);
     plane->color[1] = ft_atoi(scene->table[8]);
     plane->color[2] = ft_atoi(scene->table[9]);
@@ -72,6 +75,7 @@ int	init_cylinder(t_scene *scene)
 		return (printf("%s%s", ERROR, MEM_CY), 1);
 	vector_set(&cylinder->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
     vector_set(&cylinder->orient, ft_atof(scene->table[4]), ft_atof(scene->table[5]), ft_atof(scene->table[6]));
+	vector_set(&cylinder->cam_cylinder, scene->cam.center.x - cylinder->center.x, scene->cam.center.y - cylinder->center.y, scene->cam.center.z - cylinder->center.z);
     cylinder->diameter = ft_atof(scene->table[7]);
 	cylinder->radius = cylinder->diameter / 2;
     cylinder->height = ft_atof(scene->table[8]);

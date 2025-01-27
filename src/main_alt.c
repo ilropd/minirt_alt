@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:34:41 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/12/07 18:00:34 by irozhkov         ###   ########.fr       */
+/*   Updated: 2024/12/08 16:47:10 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,36 +70,25 @@ static void	init_scene(t_scene *scene)
 //	scene->light = NULL;
 	scene->objs = NULL;
 }
-
+/*
 static int render_frame(t_scene *scene)
 {
-/*    // Placeholder: Fill the image with a color to see if rendering works
-    int color = 0x00FF00;  // For example, a green color
-    for (int y = 0; y < HEIGHT; y++)
-    {
-        for (int x = 0; x < WIDTH; x++)
-        {
-            mlx_pixel_put(scene->mrt.connection, scene->mrt.window, x, y, color);
-        }
-    }
-    return (0);*/
-
 	int color = 0x00FF00;  // Green color
-    char *pixels = mlx_get_data_addr(scene->image, &scene->bits_per_pixel, &scene->line_length, &scene->endian);
+    char *pixels = mlx_get_data_addr(scene->mrt.img.img_ptr, &scene->mrt.img.bpp, &scene->mrt.img.line_len, &scene->mrt.img.endian);
 
     // Clear the image by filling it with the desired color
-    for (int y = 0; y < scene->height; y++) {
-        for (int x = 0; x < scene->width; x++) {
-            int pixel_index = (y * scene->line_length) + (x * (scene->bits_per_pixel / 8));
+    for (int y = 0; y < HEIGHT; y++) {
+        for (int x = 0; x < WIDTH; x++) {
+            int pixel_index = (y * scene->mrt.img.line_len) + (x * (scene->mrt.img.bpp / 8));
             *(int *)(pixels + pixel_index) = color;
         }
     }
 
     // Display the image on the window
-    mlx_put_image_to_window(scene->mrt.connection, scene->mrt.window, scene->image, 0, 0);
+    mlx_put_image_to_window(scene->mrt.connection, scene->mrt.window, scene->mrt.img.img_ptr, 0, 0);
     return (0);
 }
-
+*/
 
 int	main(int argc, char **argv)
 {
@@ -112,8 +101,8 @@ int	main(int argc, char **argv)
 		error_exit(&scene);
 /* FIX UNDER THE LINE */
 	render_init(&scene);
-//	ray_tracing(&mrt);
-	mlx_loop_hook(scene.mrt.connection, render_frame, &scene);
+	ray_tracing(&scene);
+//	mlx_loop_hook(scene.mrt.connection, render_frame, &scene);
 	events(&scene);
     mlx_loop(scene.mrt.connection);
 //	mlx_loop(&scene.mrt.connection);

@@ -1,21 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   plane_intersection.h                               :+:      :+:    :+:   */
+/*   colors.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/10/08 16:36:31 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 13:31:30 by irozhkov         ###   ########.fr       */
+/*   Created: 2024/12/12 16:04:50 by irozhkov          #+#    #+#             */
+/*   Updated: 2024/12/12 16:27:31 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PLANE_INTERSECTION_H
-# define PLANE_INTERSECTION_H
+#include "colors.h"
 
-# include "minirt.h"
+int	average_colors(int col1, int col2)
+{
+	int	r_avg;
+	int	g_avg;
+	int	b_avg;
 
-void	plane_intersection(t_item *item, t_ray *ray);
-//void	plane_intersection(t_plane *plane, t_ray *ray);
-
-#endif
+	r_avg = (((col1 >> 16) & 0xFF) + ((col2 >> 16) & 0xFF)) / 2; 
+	g_avg = (((col1 >> 8) & 0xFF) + ((col2 >> 8) & 0xFF)) / 2;
+	b_avg = ((col1 & 0xFF) + (col2 & 0xFF)) / 2;
+	return (r_avg << 16 | g_avg << 8 | b_avg);
+}
