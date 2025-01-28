@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:23:56 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 19:07:03 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/28 17:57:12 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,24 @@ void	cylinder_intersection(t_item *item, t_ray *ray)
 		}
 	}
 }
-
-/*static float	cy_body(t_cylinder *cylinder, t_ray *ray);
+/*
+static float	cy_body(t_cylinder *cylinder, t_ray *ray);
 static void	cy_caps(t_cylinder *cylinder, t_ray *ray, float d_caps);
 
 void	cylinder_intersection(t_item *item, t_ray *ray)
 {
 	t_cylinder	*cylinder;
-	float		dist_min;
-	float		d_body;
-	float		d_caps[2];
+	double		dist_min;
+	double		d_body;
+	double		d_caps[2];
 	int			color;
 
 
 	cylinder = item->type.cy;
 	d_body = cy_body(cylinder, ray);
+	d_caps[0] = MAXFLOAT;
+	d_caps[1] = MAXFLOAT;
 	cy_caps(cylinder, ray, d_caps);
-
 	dist_min = cy_closest(d_body, d_caps);
 	if (dist_min < MAXFLOAT)
 	{
@@ -62,39 +63,51 @@ void	cylinder_intersection(t_item *item, t_ray *ray)
 	}
 }
 
-static int	cy_limit(t_cylinder *cylinder, t_ray *ray, float dist)
+static int	cy_limit(t_cylinder *cylinder, t_ray *ray, double dist)
 {
 	t_vector	point;
-	float		h;
+	double		h;
 
-	point = vector_add_dir(&ray->ray_orgn, vector_mult_dir(&ray->v_ray, dist));
-	h = vector_dot_prod(vector_sub_dir(&point, &cylinder->center), cylinder->orient);
+	point = vector_add_dir(&ray->ray_orgn, &vector_mult_dir(&ray->v_ray, dist));
+	h = vector_dot_prod(&vector_sub_dir(&point, &cylinder->center), &cylinder->orient);
 	return (h >= 0 && h <= cylinder->height);
 }
 
-static void	cy_caps(t_cylinder *cylinder, t_ray *ray, float d_caps)
+static void	cy_caps(t_cylinder *cylinder, t_ray *ray, double d_caps[2])
 {
-    t_vector cap_centers[2] = {
-        cylinder->center,
-        vector_add(cylinder->center, vector_scale(cylinder->orient, cylinder->height))
-    };
+	double	denom;
 
-    for (int i = 0; i < 2; i++)
+
+	denom = vector_dot_prod(ray->v_ray, cylinder->orient);
+	if (fabs(denom) > 1e-6)
+
+	
+// Bottom cap intersection
+    if (fabs(denom) > 1e-6) // Not parallel
     {
-        double denom = vector_dot_prod(ray->v_ray, cylinder->orient);
-        t_caps[i] = MAXFLOAT;
-        if (fabs(denom) > 1e-6) // Not parallel
+        double t = vector_dot_prod(vector_sub(bottom_cap_center, ray->origin), cylinder->orient) / denom;
+        if (t > 0)
         {
-            double t = vector_dot_prod(vector_sub(cap_centers[i], ray->origin), cylinder->orient) / denom;
-            if (t > 0)
-            {
-                t_vector point = vector_add(ray->origin, vector_scale(ray->v_ray, t));
-                double dist_to_center = vector_length(vector_sub(point, cap_centers[i]));
-                if (dist_to_center <= cylinder->radius)
-                    t_caps[i] = t;
-            }
+            t_vector point = vector_add(ray->origin, vector_scale(ray->v_ray, t));
+            double dist_to_center = vector_length(vector_sub(point, bottom_cap_center));
+            if (dist_to_center <= cylinder->radius)
+                t_caps[0] = t;
         }
     }
+
+    // Top cap intersection
+    if (fabs(denom) > 1e-6) // Not parallel
+    {
+        double t = vector_dot_prod(vector_sub(top_cap_center, ray->origin), cylinder->orient) / denom;
+        if (t > 0)
+        {
+            t_vector point = vector_add(ray->origin, vector_scale(ray->v_ray, t));
+            double dist_to_center = vector_length(vector_sub(point, top_cap_center));
+            if (dist_to_center <= cylinder->radius)
+                t_caps[1] = t;
+        }
+    }
+
 }
 
 static float	cy_body(t_cylinder *cylinder, t_ray *ray)

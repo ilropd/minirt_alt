@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 16:42:38 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/28 14:09:30 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,8 @@ typedef struct	s_cylinder
 	char			*type;
 	t_vector		center;
 	t_vector		orient;
+	t_vector		top_cap;
+	t_vector		bottom_cap;
 	t_vector		cam_cylinder;
 	double			diameter;
 	double			radius;

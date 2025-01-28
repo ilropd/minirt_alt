@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 17:09:39 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/28 15:51:53 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,22 @@ int	init_plane(t_scene *scene)
     return (0);
 }
 
+static void find_cy_caps(t_cylinder *cy)
+{
+	t_vector	*orient_mult;
+	t_vector	*top;
+	t_vector	*bottom;
+
+	orient_mult = vector_mult(&cy->orient, (cy->height / 2));
+	top = vector_add(&cy->center, orient_mult);
+	bottom = vector_sub(orient_mult, &cy->center);
+	vector_set(&cy->top_cap, top->x, top->y, top->z);
+	vector_set(&cy->bottom_cap, bottom->x, bottom->y, bottom->z);
+	free(orient_mult);
+	free(top);
+	free(bottom);
+}
+
 int	init_cylinder(t_scene *scene)
 {
 	t_cylinder	*cylinder;
@@ -79,6 +95,7 @@ int	init_cylinder(t_scene *scene)
     cylinder->diameter = ft_atof(scene->table[7]);
 	cylinder->radius = cylinder->diameter / 2;
     cylinder->height = ft_atof(scene->table[8]);
+	find_cy_caps(cylinder);
     cylinder->color[0] = ft_atoi(scene->table[9]);
     cylinder->color[1] = ft_atoi(scene->table[10]);
     cylinder->color[2] = ft_atoi(scene->table[11]);
