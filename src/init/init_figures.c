@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/28 15:51:53 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/29 16:07:24 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,16 +64,18 @@ static void find_cy_caps(t_cylinder *cy)
 {
 	t_vector	*orient_mult;
 	t_vector	*top;
-	t_vector	*bottom;
+//	t_vector	*bottom;
 
-	orient_mult = vector_mult(&cy->orient, (cy->height / 2));
+//	orient_mult = vector_mult(&cy->orient, (cy->height / 2));
+	orient_mult = vector_mult(&cy->orient, cy->height);
 	top = vector_add(&cy->center, orient_mult);
-	bottom = vector_sub(orient_mult, &cy->center);
+//	bottom = vector_sub(orient_mult, &cy->center);
 	vector_set(&cy->top_cap, top->x, top->y, top->z);
-	vector_set(&cy->bottom_cap, bottom->x, bottom->y, bottom->z);
+	vector_set(&cy->bottom_cap, cy->center.x, cy->center.y, cy->center.z);
+//	printf("CAPS: btm: %f | %f |%f --- top: %f | %f | %f\n", cy->bottom_cap.x, cy->bottom_cap.y, cy->bottom_cap.z, top->x, top->y, top->z);
 	free(orient_mult);
 	free(top);
-	free(bottom);
+//	free(bottom);
 }
 
 int	init_cylinder(t_scene *scene)
@@ -91,11 +93,12 @@ int	init_cylinder(t_scene *scene)
 		return (printf("%s%s", ERROR, MEM_CY), 1);
 	vector_set(&cylinder->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
     vector_set(&cylinder->orient, ft_atof(scene->table[4]), ft_atof(scene->table[5]), ft_atof(scene->table[6]));
-	vector_set(&cylinder->cam_cylinder, scene->cam.center.x - cylinder->center.x, scene->cam.center.y - cylinder->center.y, scene->cam.center.z - cylinder->center.z);
+//	vector_set(&cylinder->cam_cylinder, scene->cam.center.x - cylinder->center.x, scene->cam.center.y - cylinder->center.y, scene->cam.center.z - cylinder->center.z);
     cylinder->diameter = ft_atof(scene->table[7]);
 	cylinder->radius = cylinder->diameter / 2;
     cylinder->height = ft_atof(scene->table[8]);
 	find_cy_caps(cylinder);
+	vector_set(&cylinder->cam_cylinder, scene->cam.center.x - cylinder->bottom_cap.x, scene->cam.center.y - cylinder->bottom_cap.y, scene->cam.center.z - cylinder->bottom_cap.z);
     cylinder->color[0] = ft_atoi(scene->table[9]);
     cylinder->color[1] = ft_atoi(scene->table[10]);
     cylinder->color[2] = ft_atoi(scene->table[11]);
