@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/28 14:09:30 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:27:59 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 # define STRUCTURES_OBJECTS_H
 
 # include "structures_scene.h"
+# include "type_id.h"
 
 typedef struct s_sp_vars
 {
@@ -24,14 +25,6 @@ typedef struct s_sp_vars
 	float	dist1;
 	float	dist2;
 }	t_sp_vars;
-
-typedef enum e_type_id
-{
-	SP,
-	PL,
-	CY,
-	NONE
-}	t_type_id;
 
 typedef struct s_sphere
 {

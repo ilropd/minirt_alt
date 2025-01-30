@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   intersections.h                                    :+:      :+:    :+:   */
+/*   type_id.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/12 16:18:10 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/30 15:57:26 by irozhkov         ###   ########.fr       */
+/*   Created: 2025/01/30 16:19:10 by irozhkov          #+#    #+#             */
+/*   Updated: 2025/01/30 16:20:02 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef INTERSECTIONS_H
-# define INTERSECTIONS_H
+#ifndef TYPE_ID_H
+# define TYPE_ID_H
 
-# include "minirt.h"
-
-void	get_intersections(t_scene *scene, t_ray *ray);
-void	check_ray(t_ray *ray, int color, float dist, t_type_id id);
+typedef enum e_type_id
+{
+	SP,
+	PL,
+	CY,
+	NONE
+}	t_type_id;
 
 #endif
-

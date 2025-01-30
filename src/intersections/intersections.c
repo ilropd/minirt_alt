@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:12:55 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 16:23:21 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:29:06 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ void	get_intersections(t_scene *scene, t_ray *ray)
 	}
 }
 
-void	check_ray(t_ray *ray, int color, float dist)
+void	check_ray(t_ray *ray, int color, float dist, t_type_id id)
 {
 	if (ray->hit == 0)
 	{
@@ -43,8 +43,14 @@ void	check_ray(t_ray *ray, int color, float dist)
 			ray->dist_curr = dist;
 		}
 		if (dist == ray->dist_curr)
-			ray->dot_color = average_colors(color, ray->dot_color);
-/*		if ((dist > ray->dist_curr) && ray->dot_color == 0)
-			ray->dot_color = color;*/
+		{
+			if (id != ray->id)
+			{
+				ray->dot_color = average_colors(color, ray->dot_color);
+				ray->id = id;
+			}
+			else
+				ray->dot_color = color;
+		}
 	}
 }

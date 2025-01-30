@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 18:42:47 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/30 16:28:08 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,15 +14,15 @@
 # define STRUCTURES_SCENE_H
 
 # include "structures_objects.h"
+# include "type_id.h"
 
-typedef union	u_obj	t_obj;
-typedef struct  s_item	t_item;
+typedef union	u_obj		t_obj;
+typedef struct  s_item		t_item;
 
 /* define size of rendering window */
 
 # define WIDTH 600
 # define HEIGHT 600
-# define CORNER_THRESHOLD 20
 # define MAXFLOAT 3.402823466e+38F
 
 /* VECTOR STRUCTURES */
@@ -46,6 +46,7 @@ typedef struct s_ray
 {
 	t_vector	v_ray;
 	t_vector	ray_orgn;
+	t_type_id	id;
 	double		ray_x;
 	double		ray_y;
 	int			hit;

@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:51:29 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 17:06:51 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:57:54 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,8 @@ void	sphere_intersection(t_item *item, t_ray *ray)
 	sphere = item->type.sp;
 	var.a = vector_dot_prod(&ray->v_ray, &ray->v_ray);
 	var.b = 2 * vector_dot_prod(&sphere->cam_sphere, &ray->v_ray);
-	var.c = vector_dot_prod(&sphere->cam_sphere, &sphere->cam_sphere) - (sphere->radius * sphere->radius);
+	var.c = vector_dot_prod(&sphere->cam_sphere, &sphere->cam_sphere)
+	- (sphere->radius * sphere->radius);
 	var.discr = (var.b * var.b) - (4 * var.a * var.c);
 	if (var.discr > 0)
 	{
@@ -29,11 +30,11 @@ void	sphere_intersection(t_item *item, t_ray *ray)
         var.dist2 = (-var.b - sqrtf(var.discr)) / (2 * var.a);
 		if (var.dist1 > 0 || var.dist2 > 0)
 		{
-			color = (sphere->color[0] << 16) | (sphere->color[1] << 8) | sphere->color[2];
+			color = rgb_to_int(sphere->color);
 			if (var.dist1 <= var.dist2)
-				check_ray(ray, color, var.dist1);
+				check_ray(ray, color, var.dist1, SP);
 			else
-				check_ray(ray, color, var.dist2);
+				check_ray(ray, color, var.dist2, SP);
 		}
 	}
 }

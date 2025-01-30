@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 19:18:50 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/28 17:52:43 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:58:09 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	plane_intersection(t_item *item, t_ray *ray)
 		dist = (vector_dot_prod(&plane->center, &plane->orient) - vector_dot_prod(&plane->cam_plane, &plane->orient)) / denom;
 		if (dist > 0)
 		{
-			color = ((plane->color[0] << 16) | (plane->color[1] << 8) | plane->color[2]);
-			check_ray(ray, color, dist);
+			color = rgb_to_int(plane->color);
+			check_ray(ray, color, dist, PL);
 		}
 	}
 }

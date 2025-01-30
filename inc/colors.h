@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:12:31 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/12/12 16:21:13 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/01/30 15:42:28 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,5 +17,6 @@
 
 /* colors.c */
 int	average_colors(int col1, int col2);
+int	rgb_to_int(unsigned int color[3]);
 
 #endif
