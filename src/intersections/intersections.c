@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:12:55 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/30 16:29:06 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/01 12:58:08 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	get_intersections(t_scene *scene, t_ray *ray)
 	ray->dist_curr = MAXFLOAT;
 	while (current_item)
 	{
-		current_item->intersect(current_item, ray);
+		current_item->intersect(scene, current_item, ray);
 		current_item = current_item->next;
 	}
 }

@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:34:32 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 17:14:09 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/01 13:50:21 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@
 # include "sphere_intersection.h"
 # include "plane_intersection.h"
 # include "cylinder_intersection.h"
+
+# include "light_calc.h"
 
 /* render_init */
 int		render_init(t_scene *scene);

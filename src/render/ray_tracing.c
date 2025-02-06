@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:05:12 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 18:47:02 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/05 14:22:32 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,13 +29,41 @@ static void	camray(t_scene *scene, t_ray *ray)
 	t_vector	up_comp;
 	t_vector	hor_vert;
 
-	up = (t_vector){0, 1, 0};
+	if (fabs(scene->cam.orient.x) < 1e-4 && fabs(scene->cam.orient.x) < 1e-4)
+		up = (t_vector){0, 0, 1};
+	else
+		up = (t_vector){0, 1, 0};
 	right_comp = right_comp_calc(&up, scene, ray->ray_x);
 	up_comp = vector_mult_dir(&up, ray->ray_y);
 	hor_vert = vector_add_dir(&right_comp, &up_comp);
 	ray->v_ray = vector_add_dir(&hor_vert, &scene->cam.orient);
-	vector_set(&ray->ray_orgn, scene->cam.center.x, scene->cam.center.y, scene->cam.center.z);
+	vector_set(&ray->ray_orgn, scene->cam.center.x, scene->cam.center.y,
+			scene->cam.center.z);
 	vector_normalize(&ray->v_ray);
+}
+
+static t_ray *ray_init(t_scene *scene)
+{
+	t_ray	*ray;
+
+	ray = malloc(sizeof(t_ray));
+	if (!ray)
+	{
+		free_all(scene);
+		exit(1);
+	}
+	ray->v_ray = (t_vector){0, 0, 0};
+	ray->ray_orgn = scene->cam.center;
+	ray->normal = (t_vector){0, 0, 0};
+	ray->hit_p = (t_vector){0, 0, 0};
+	ray->id = NONE;
+	ray->ray_x = 0.0;
+	ray->ray_y = 0.0;
+	ray->cap_hit = -100;
+	ray->hit = 0;
+	ray->dot_color = 0;
+	ray->dist_curr = MAXFLOAT;
+	return (ray);
 }
 
 void    ray_tracing(t_scene *scene)
@@ -44,7 +72,7 @@ void    ray_tracing(t_scene *scene)
     t_viewport  *viewport;
 
     viewport = get_viewport(WIDTH, HEIGHT, scene);
-    ray = malloc(sizeof(t_ray));
+	ray = ray_init(scene);
     scene->mrt.angle_y = HEIGHT / 2;
     while (scene->mrt.angle_y >= (HEIGHT / 2) * (-1))
     {

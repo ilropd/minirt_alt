@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/30 16:28:08 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/04 16:15:29 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,11 @@ typedef struct  s_item		t_item;
 
 # define WIDTH 600
 # define HEIGHT 600
+
+/* define values for calculation */
+
 # define MAXFLOAT 3.402823466e+38F
+# define SPEC	1
 
 /* VECTOR STRUCTURES */
 
@@ -46,9 +50,12 @@ typedef struct s_ray
 {
 	t_vector	v_ray;
 	t_vector	ray_orgn;
+	t_vector	normal;
+	t_vector	hit_p;
 	t_type_id	id;
 	double		ray_x;
 	double		ray_y;
+	double		cap_hit;
 	int			hit;
 	int			dot_color;
 	float		dist_curr;

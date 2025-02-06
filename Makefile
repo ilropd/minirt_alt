@@ -6,7 +6,7 @@
 #    By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/01/25 17:08:46 by irozhkov         ###   ########.fr        #
+#    Updated: 2025/02/01 14:00:10 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ INC_DIR = inc/
 INIT_DIR = init/
 INTERSEC_DIR = intersections/
 LIBFT_DIR = Libft/
+LIGHT_DIR = light/
 MLX_DIR = minilibx-linux/
 OBJ_DIR = obj/
 PARS_DIR = parser/
@@ -48,6 +49,7 @@ COLORS_FILES = colors
 GEOM_FILES = vector vector_math vector_math_dir vector_prod
 INIT_FILES = init_all init_figures init_unique set_figures
 INTERSEC_FILES = intersections plane_intersection sphere_intersection cylinder_intersection
+LIGHT_FILES = light_calc
 PARS_FILES = parsing_gnl parsing_scene parsing_table
 REND_FILES = ray_tracing render#events render render_init
 UTILS_FILES = ft_atof utils_add utils_exit utils_free utils_parsing utils_str
@@ -59,6 +61,7 @@ SRC_FILES+=$(addprefix $(COLORS_DIR),$(COLORS_FILES))
 SRC_FILES+=$(addprefix $(GEOM_DIR),$(GEOM_FILES))
 SRC_FILES+=$(addprefix $(INIT_DIR),$(INIT_FILES))
 SRC_FILES+=$(addprefix $(INTERSEC_DIR),$(INTERSEC_FILES))
+SRC_FILES+=$(addprefix $(LIGHT_DIR),$(LIGHT_FILES))
 SRC_FILES+=$(addprefix $(PARS_DIR),$(PARS_FILES))
 SRC_FILES+=$(addprefix $(REND_DIR),$(REND_FILES))
 SRC_FILES+=$(addprefix $(UTILS_DIR),$(UTILS_FILES))
