@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:12:55 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/01 12:58:08 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:22:54 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	check_ray(t_ray *ray, int color, float dist, t_type_id id)
 			ray->dot_color = color;
 			ray->dist_curr = dist;
 		}
-		if (dist == ray->dist_curr)
+		else if (dist == ray->dist_curr)
 		{
 			if (id != ray->id)
 			{
@@ -52,5 +52,7 @@ void	check_ray(t_ray *ray, int color, float dist, t_type_id id)
 			else
 				ray->dot_color = color;
 		}
+//		else if (dist > ray->dist_curr)
+//			ray->is_shadow = 1;
 	}
 }

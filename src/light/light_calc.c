@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:16:36 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/05 16:17:04 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:10:36 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@ static int color_calc(t_scene *scene, float intensity, unsigned int color[3])
 static float diffuse_calc(t_scene *scene, t_ray *ray)
 {
 	float		dif_dot_spec[3];
+	int			is_shadow;
 	t_vector	*light_dir;
 	t_vector	*view_dir;
 	t_vector	*reflect_dir;
@@ -48,9 +49,20 @@ static float diffuse_calc(t_scene *scene, t_ray *ray)
 	temp = vector_mult(&ray->normal, 2 * dif_dot_spec[1]);
 	reflect_dir = vector_sub(temp, light_dir);
 	vector_normalize(reflect_dir);
-	free(temp);
-	dif_dot_spec[0] = fmax(0, dif_dot_spec[1]);
-	dif_dot_spec[2] = pow(fmax(0, vector_dot_prod(view_dir, reflect_dir)), SPEC);
+	free(temp);	
+	is_shadow = shadow_calc(scene, ray);
+	if (is_shadow == 1)
+	{
+		dif_dot_spec[0] = 0;
+		dif_dot_spec[2] = 0;
+	}
+	else
+	{
+		dif_dot_spec[0] = fmax(0, dif_dot_spec[1]);
+		dif_dot_spec[2] = pow(fmax(0, vector_dot_prod(view_dir, reflect_dir)), SPEC);
+	}
+//	dif_dot_spec[0] = fmax(0, dif_dot_spec[1]);
+//	dif_dot_spec[2] = pow(fmax(0, vector_dot_prod(view_dir, reflect_dir)), SPEC);
 	free(light_dir);
 	free(view_dir);
 	free(reflect_dir);

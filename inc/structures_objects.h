@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/01 12:57:50 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:07:54 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -73,6 +73,7 @@ typedef struct	s_item
 	t_obj			type;
 //	void			(*intersect)(t_obj *, t_ray *, t_item *);
 	void			(*intersect)(t_scene *, t_item *, t_ray *);
+	int				(*shadows)(t_item *, t_ray *);
 //	void			(*trans)(t_obj *obj, t_sc *sc);
 	void			(*free_obj)(t_obj *obj);
 //	void			(*get_norm)(t_obj *, t_hit *, t_ray *);

@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/04 16:15:29 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:21:37 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,6 +58,8 @@ typedef struct s_ray
 	double		cap_hit;
 	int			hit;
 	int			dot_color;
+	int			is_shadow;
+//	int			is_shadow_ray;
 	float		dist_curr;
 }	t_ray;
 

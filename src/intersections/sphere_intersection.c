@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:51:29 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/01 22:24:01 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/08 19:08:14 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,9 +44,33 @@ void	sphere_intersection(t_scene *scene, t_item *item, t_ray *ray)
 		var.dist2 = (-var.b - sqrtf(var.discr)) / (2 * var.a);
 		if (var.dist1 > 0 || var.dist2 > 0)
 		{
+			ray->hit = 1;
 			get_sp_normal(ray, sphere, &var);
 			color = light_calc(scene, ray, sphere->color);
 			check_ray(ray, color, fmin(var.dist1, var.dist2), SP);
 		}
 	}
 }
+
+int	sphere_sh_intersection(t_item *item, t_ray *ray)
+{
+	t_sphere 	*sphere;
+	t_vector	*temp;
+	t_sp_vars	var;
+
+	sphere = item->type.sp;
+    temp = vector_sub(&ray->ray_orgn, &sphere->center);
+    var.a = vector_dot_prod(&ray->v_ray, &ray->v_ray);
+    var.b = 2 * vector_dot_prod(temp, &ray->v_ray);
+    var.c = vector_dot_prod(temp, temp) - (sphere->radius * sphere->radius);
+    var.discr = (var.b * var.b) - (4 * var.a * var.c);
+    free(temp);
+    if (var.discr < 0)
+		return (0);
+	var.dist1 = (-var.b - sqrtf(var.discr)) / (2 * var.a);
+	var.dist2 = (-var.b + sqrtf(var.discr)) / (2 * var.a);
+	if ((var.dist1 > 0 || var.dist2 > 0))
+		return (1);
+	return (0);
+}
+

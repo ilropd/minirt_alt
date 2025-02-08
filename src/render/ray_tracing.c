@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:05:12 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/05 14:22:32 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/08 17:22:27 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ static void	camray(t_scene *scene, t_ray *ray)
 	t_vector	up_comp;
 	t_vector	hor_vert;
 
-	if (fabs(scene->cam.orient.x) < 1e-4 && fabs(scene->cam.orient.x) < 1e-4)
+	if (fabs(scene->cam.orient.x) < 1e-4 && fabs(scene->cam.orient.z) < 1e-4)
 		up = (t_vector){0, 0, 1};
 	else
 		up = (t_vector){0, 1, 0};
@@ -62,6 +62,8 @@ static t_ray *ray_init(t_scene *scene)
 	ray->cap_hit = -100;
 	ray->hit = 0;
 	ray->dot_color = 0;
+	ray->is_shadow = 0;
+//	ray->is_shadow_ray = 0;
 	ray->dist_curr = MAXFLOAT;
 	return (ray);
 }

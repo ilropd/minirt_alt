@@ -6,7 +6,7 @@
 #    By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/01 14:00:10 by irozhkov         ###   ########.fr        #
+#    Updated: 2025/02/06 16:18:55 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -49,7 +49,7 @@ COLORS_FILES = colors
 GEOM_FILES = vector vector_math vector_math_dir vector_prod
 INIT_FILES = init_all init_figures init_unique set_figures
 INTERSEC_FILES = intersections plane_intersection sphere_intersection cylinder_intersection
-LIGHT_FILES = light_calc
+LIGHT_FILES = light_calc shadow_calc
 PARS_FILES = parsing_gnl parsing_scene parsing_table
 REND_FILES = ray_tracing render#events render render_init
 UTILS_FILES = ft_atof utils_add utils_exit utils_free utils_parsing utils_str
