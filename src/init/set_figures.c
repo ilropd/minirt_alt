@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:55:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/08 19:37:49 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:20:50 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,5 @@ void	set_cylinder(t_item *obj, t_cylinder *cylinder)
 	obj->type.cy = cylinder;
 	obj->free_obj = free_cylinder;
 	obj->intersect = cylinder_intersection;
+	obj->shadows = cylinder_sh_intersection;
 }

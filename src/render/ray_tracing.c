@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:05:12 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/08 17:22:27 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/10 19:32:23 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,16 @@ static void	camray(t_scene *scene, t_ray *ray)
 	t_vector	up_comp;
 	t_vector	hor_vert;
 
-	if (fabs(scene->cam.orient.x) < 1e-4 && fabs(scene->cam.orient.z) < 1e-4)
+/*	if (fabs(scene->cam.orient.x) < 1e-4 && fabs(scene->cam.orient.z) < 1e-4)
 		up = (t_vector){0, 0, 1};
 	else
-		up = (t_vector){0, 1, 0};
+		up = (t_vector){0, 1, 0};*/
+	if (fabs(scene->cam.orient.x) < 1e-4 && fabs(scene->cam.orient.z) < 1e-4)
+		up = (t_vector){0, 0, 1};
+	else if (fabs(scene->cam.orient.y) > 0.99)
+    	up = (t_vector){1, 0, 0};
+   	else
+    	up = (t_vector){0, 1, 0};
 	right_comp = right_comp_calc(&up, scene, ray->ray_x);
 	up_comp = vector_mult_dir(&up, ray->ray_y);
 	hor_vert = vector_add_dir(&right_comp, &up_comp);

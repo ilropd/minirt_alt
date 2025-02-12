@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/08 17:21:37 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/12 15:30:21 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ typedef struct  s_item		t_item;
 /* define values for calculation */
 
 # define MAXFLOAT 3.402823466e+38F
+# define BIAS 1e-4
+# define PL_BIAS 1e-2
 # define SPEC	1
 
 /* VECTOR STRUCTURES */

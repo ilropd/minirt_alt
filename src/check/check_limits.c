@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:23:39 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/09/27 14:28:57 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/12 16:34:52 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	check_rgb_limit(char **table, int start, int num_args)
 
 int	check_degree_limit(char **table, int start, int num_args)
 {
-	int end;
+	int	end;
 	int	to_check;
 
 	end = start + num_args;

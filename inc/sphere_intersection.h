@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:52:36 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/08 19:05:46 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/11 19:43:38 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 # include "minirt.h"
 
 void	sphere_intersection(t_scene *scene, t_item *item, t_ray *ray);
-int		sphere_sh_intersection(t_item *item, t_ray *ray);
+double		sphere_sh_intersection(t_item *item, t_ray *ray);
 
 #endif
 

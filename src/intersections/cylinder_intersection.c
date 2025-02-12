@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:23:56 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/08 20:14:19 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/12 13:39:45 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -162,4 +162,19 @@ void	cylinder_intersection(t_scene *scene, t_item *item, t_ray *ray)
 		color = light_calc(scene, ray, cylinder->color);
         check_ray(ray, color, fmin(d_body, d_caps), CY);
 	}
+}
+
+double	cylinder_sh_intersection(t_item *item, t_ray *ray)
+{
+    t_cylinder  *cylinder;
+    double      d_body;
+    double      d_caps;
+
+    cylinder = item->type.cy;
+    d_body = cy_body(cylinder, ray);
+    d_caps = MAXFLOAT;
+    cy_caps(cylinder, ray, &d_caps);
+    if (d_body < MAXFLOAT || d_caps < MAXFLOAT)
+		return (fmin(d_body, d_caps));
+	return (MAXFLOAT);
 }
