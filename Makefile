@@ -6,7 +6,7 @@
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/12 17:37:27 by jpancorb         ###   ########.fr        #
+#    Updated: 2025/02/12 18:07:19 by jpancorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -88,7 +88,7 @@ $(LIBFT_DIR)libft.a:
 	$(MAKE) -C $(LIBFT_DIR) all
 
 $(MLX_DIR)libmlx.a:
-	-$(MAKE) -C $(MLX_DIR) all
+	-$(MAKE) -C $(MLX_DIR) all CFLAGS="-O3 -w -I/usr/include" > /dev/null 2>&1
 
 clean:
 	$(RMD) $(OBJ_DIR)
