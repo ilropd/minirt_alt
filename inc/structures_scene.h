@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/12 15:30:21 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 18:55:40 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct  s_item		t_item;
 
 /* define size of rendering window */
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 1200
+# define HEIGHT 1200
 
 /* define values for calculation */
 
