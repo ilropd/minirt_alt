@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   minirt.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:34:32 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/06 16:20:21 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:11:15 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,16 @@
 # include "shadow_calc.h"
 
 /* render_init */
-int		render_init(t_scene *scene);
-void	events(t_scene *scene);
+int			render_init(t_scene *scene);
+void		events(t_scene *scene);
 
 /* ray_tracing.c */
 void		ray_tracing(t_scene *scene);
 t_viewport	*get_viewport(int width, int height, t_scene *scene);
 
 /* key_handler */
-int	destroy_handler(t_scene *scene);
-int	key_handler(int key, t_scene *scene);
+int			destroy_handler(t_scene *scene);
+int			key_handler(int key, t_scene *scene);
 //int	mouse_handler(int button, int x, int y,  t_mrt *mrt);
 
 #endif

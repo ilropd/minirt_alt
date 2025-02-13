@@ -3,36 +3,36 @@
 /*                                                        :::      ::::::::   */
 /*   light_calc.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:16:36 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 14:15:15 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:40:25 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light_calc.h"
 
-static int color_calc(t_scene *scene, float intensity, unsigned int color[3])
+static int	color_calc(t_scene *scene, float intensity, unsigned int color[3])
 {
 	unsigned int	rgb[3];
 	unsigned int	amb_rgb[3];
 
 	amb_rgb[0] = fmin(255, scene->amb.ratio * scene->amb.color[0]
-					* color[0] / 255);
+			* color[0] / 255);
 	amb_rgb[1] = fmin(255, scene->amb.ratio * scene->amb.color[1]
-					* color[1] / 255);
+			* color[1] / 255);
 	amb_rgb[2] = fmin(255, scene->amb.ratio * scene->amb.color[2]
-					* color[2] / 255);
+			* color[2] / 255);
 	rgb[0] = fmin(255, intensity * scene->light.color[0]
-				* color[0] / 255 + amb_rgb[0]);
+			* color[0] / 255 + amb_rgb[0]);
 	rgb[1] = fmin(255, intensity * scene->light.color[1]
-				* color[1] / 255 + amb_rgb[1]);
+			* color[1] / 255 + amb_rgb[1]);
 	rgb[2] = fmin(255, intensity * scene->light.color[2]
-				* color[2] / 255 + amb_rgb[2]);
+			* color[2] / 255 + amb_rgb[2]);
 	return (rgb_to_int(rgb));
 }
 
-static float diffuse_calc(t_scene *scene, t_ray *ray)
+static float	diffuse_calc(t_scene *scene, t_ray *ray)
 {
 	float		dif_dot_spec[3];
 	int			is_shadow;
@@ -51,7 +51,7 @@ static float diffuse_calc(t_scene *scene, t_ray *ray)
 	temp = vector_mult(&ray->normal, 2 * dif_dot_spec[1]);
 	reflect_dir = vector_sub(temp, light_dir);
 	vector_normalize(reflect_dir);
-	free(temp);	
+	free(temp);
 	is_shadow = shadow_calc(scene, ray);
 	if (is_shadow == 1)
 	{
@@ -61,7 +61,8 @@ static float diffuse_calc(t_scene *scene, t_ray *ray)
 	else
 	{
 		dif_dot_spec[0] = fmax(0, dif_dot_spec[1]);
-		dif_dot_spec[2] = pow(fmax(0, vector_dot_prod(view_dir, reflect_dir)), SPEC);
+		dif_dot_spec[2] = pow(fmax(0, vector_dot_prod(view_dir, reflect_dir)),
+				SPEC);
 	}
 	free(light_dir);
 	free(view_dir);

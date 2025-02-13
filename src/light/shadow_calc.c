@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   shadow_calc.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:38:54 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/12 16:32:32 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:41:30 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ static t_ray	*shadow_ray_init(t_scene *sc, t_ray *ray)
 	return (shadow_ray);
 }
 
-static double light_dist_culc(t_scene *scene, t_ray *shadow_ray)
+static double	light_dist_culc(t_scene *scene, t_ray *shadow_ray)
 {
 	t_vector	*light_vec;
 	double		dist;
@@ -68,11 +68,11 @@ int	shadow_calc(t_scene *scene, t_ray *ray)
 		dist = all_objs->shadows(all_objs, shadow_ray);
 		if (dist < light_dist && dist > 1e-4)
 		{
-            free(shadow_ray);
-            return (1);
-        }
-        all_objs = all_objs->next;
-    }
+			free(shadow_ray);
+			return (1);
+		}
+		all_objs = all_objs->next;
+	}
 	free(shadow_ray);
 	return (0);
 }

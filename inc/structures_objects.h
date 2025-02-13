@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures_objects.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 13:11:21 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:13:13 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ typedef struct s_plane
 	unsigned int	color[3];
 }	t_plane;
 
-typedef struct	s_cylinder
+typedef struct s_cylinder
 {
 	char			*type;
 	t_vector		center;
@@ -59,15 +59,14 @@ typedef struct	s_cylinder
 	unsigned int	color[3];
 }	t_cylinder;
 
-
-typedef union	u_obj
+typedef union u_obj
 {
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
 }	t_obj;
 
-typedef struct	s_item
+typedef struct s_item
 {
 	t_type_id		id;
 	t_obj			type;

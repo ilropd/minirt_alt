@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   render.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 18:14:57 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/12/07 18:00:37 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:43:42 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "minirt.h"
 
-int destroy_handler(t_scene *scene)
+int	destroy_handler(t_scene *scene)
 {
 	printf ("X button pressed\n");
 	free_all(scene);
@@ -39,7 +39,7 @@ void	events(t_scene *scene)
 		free_all(scene);
 	}
 	mlx_hook(scene->mrt.window, 2, 1L << 0, key_handler, scene);
-    mlx_hook(scene->mrt.window, 17, 0L, destroy_handler, scene);
+	mlx_hook(scene->mrt.window, 17, 0L, destroy_handler, scene);
 }
 
 int	render_init(t_scene *scene)

@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_str.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 16:30:49 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/09/18 12:19:48 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:44:47 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stddef.h>
 
-int     ft_isspace(char c);
+int	ft_isspace(char c);
 
 char	*ft_strncpy(char *dest, const char *src, size_t n)
 {
@@ -35,7 +35,7 @@ int	ft_strcmp(const char *str1, const char *str2)
 		str1++;
 		str2++;
 	}
-	return *(unsigned char *)str1 - *(unsigned char *)str2;
+	return (*(unsigned char *)str1 - *(unsigned char *)str2);
 }
 
 int	ft_empty_or_whitespaces(const char *str)

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane_intersection.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 19:18:50 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/11 19:51:21 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:37:28 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	plane_intersection(t_scene *scene, t_item *item, t_ray *ray)
 
 double	plane_sh_intersection(t_item *item, t_ray *ray)
 {
-	t_plane 	*plane;
+	t_plane		*plane;
 	t_vector	*temp;
 	double		dist;
 	double		denom;

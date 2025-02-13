@@ -3,16 +3,16 @@
 /*                                                        :::      ::::::::   */
 /*   utils_parsing.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 15:02:15 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/09/22 15:12:32 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:44:17 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-unsigned int parse_int(char **str)
+unsigned int	parse_int(char **str)
 {
 	char			*start;
 	unsigned int	value;

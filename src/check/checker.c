@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:54:43 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 19:22:53 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:17:25 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,11 +39,9 @@ int	check_digit(const char *str, char type)
 
 	digit = 0;
 	point = 0;
-	if(!str)
-		return (1);
-	if (*str == '+' || *str == '-')
+	if (str && (*str == '+' || *str == '-'))
 		str++;
-	while (*str)
+	while (str && *str)
 	{
 		if (ft_isdigit(*str))
 			digit = 1;

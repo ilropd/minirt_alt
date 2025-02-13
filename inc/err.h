@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   err.h                                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:13:20 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/12/07 16:39:26 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:10:08 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # define ERROR "\033[1;31mError\n\033[0m"
 # define WARN "\033[1;33mWarning\n\033[0m"
 
-/* Errors of file checking*/ 
+/* Errors of file checking*/
 # define FILE_NE "File doesn't exist\n"
 # define FILE_E "File is empty\n"
 # define FILE_RET "Cannot retrieve file information\n"

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   plane_intersection.h                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/08 16:36:31 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/11 19:43:19 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:12:12 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 # include "minirt.h"
 
-void	plane_intersection(t_scene *scene, t_item *item, t_ray *ray);
+void		plane_intersection(t_scene *scene, t_item *item, t_ray *ray);
 double		plane_sh_intersection(t_item *item, t_ray *ray);
 
 #endif

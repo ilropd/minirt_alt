@@ -3,17 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   init.h                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:19:36 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/26 17:18:32 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:10:31 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef INIT_H
 # define INIT_H
 
-#include "minirt.h"
+# include "minirt.h"
 # include "structures_scene.h"
 # include "structures_objects.h"
 
@@ -27,7 +27,7 @@ int		init_sphere(t_scene *scene);
 
 /* set_figures.c */
 void	set_sphere(t_item *obj, t_sphere *sphere);
-void    set_plane(t_item *obj, t_plane *plane);
+void	set_plane(t_item *obj, t_plane *plane);
 void	set_cylinder(t_item *obj, t_cylinder *cylinder);
 
 /* init_unique.c */

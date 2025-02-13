@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   init_figures.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 14:24:21 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:27:11 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,8 @@ int	init_sphere(t_scene *scene)
 	sphere->type = scene->table[0];
 	if (!sphere->type)
 		return (printf("%s%s", ERROR, MEM_SP), 1);
-	vector_set(&sphere->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
+	vector_set(&sphere->center, ft_atof(scene->table[1]),
+		ft_atof(scene->table[2]), ft_atof(scene->table[3]));
 	printf("cam x: %f, sphere x: %f\ncam y: %f, sphere y: %f\ncam z: %f, sphere z: %f\n", scene->cam.center.x, sphere->center.x, scene->cam.center.y, sphere->center.y, scene->cam.center.z, sphere->center.z);
 	vector_set(&sphere->cam_sphere, scene->cam.center.x - sphere->center.x, scene->cam.center.y - sphere->center.y, scene->cam.center.z - sphere->center.z);
 	sphere->diameter = ft_atof(scene->table[4]);
@@ -48,11 +49,18 @@ int	init_plane(t_scene *scene)
 	plane->type = scene->table[0];
 	if (!plane->type)
 		return (printf("%s%s", ERROR, MEM_PL), 1);
-	vector_set (&plane->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
-	vector_set(&plane->orient, ft_atof(scene->table[4]), ft_atof(scene->table[5]), ft_atof(scene->table[6]));
-	vector_set(&plane->cam_plane, scene->cam.center.x - plane->center.x, scene->cam.center.y - plane->center.y, scene->cam.center.z - plane->center.z);
+	vector_set (&plane->center, ft_atof(scene->table[1]),
+		ft_atof(scene->table[2]), ft_atof(scene->table[3]));
+	vector_set(&plane->orient, ft_atof(scene->table[4]),
+		ft_atof(scene->table[5]), ft_atof(scene->table[6]));
+	vector_set(&plane->cam_plane, scene->cam.center.x - plane->center.x,
+		scene->cam.center.y - plane->center.y,
+		scene->cam.center.z - plane->center.z);
 	set_color(scene, &plane->color, 7);
-	printf("Plane Initialized: Type: %s, Center: %f | %f | %f, Orient: %f | %f | %f, Color: (%u, %u, %u)\n", plane->type, plane->center.x, plane->center.y, plane->center.z, plane->orient.x, plane->orient.y, plane->orient.z, plane->color[0], plane->color[1], plane->color[2]);
+	printf("Plane Initialized: Type: %s, Center: %f | %f | %f, Orient:"
+		" %f | %f | %f, Color: (%u, %u, %u)\n", plane->type, plane->center.x,
+		plane->center.y, plane->center.z, plane->orient.x, plane->orient.y,
+		plane->orient.z, plane->color[0], plane->color[1], plane->color[2]);
 	return (0);
 }
 
@@ -82,8 +90,10 @@ int	init_cylinder(t_scene *scene)
 	cylinder->type = scene->table[0];
 	if (!cylinder->type)
 		return (printf("%s%s", ERROR, MEM_CY), 1);
-	vector_set(&cylinder->center, ft_atof(scene->table[1]), ft_atof(scene->table[2]), ft_atof(scene->table[3]));
-	vector_set(&cylinder->orient, ft_atof(scene->table[4]), ft_atof(scene->table[5]), ft_atof(scene->table[6]));
+	vector_set(&cylinder->center, ft_atof(scene->table[1]),
+		ft_atof(scene->table[2]), ft_atof(scene->table[3]));
+	vector_set(&cylinder->orient, ft_atof(scene->table[4]),
+		ft_atof(scene->table[5]), ft_atof(scene->table[6]));
 	cylinder->diameter = ft_atof(scene->table[7]);
 	cylinder->radius = cylinder->diameter / 2;
 	cylinder->height = ft_atof(scene->table[8]);
