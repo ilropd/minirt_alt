@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:12:31 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/30 15:42:28 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 13:52:09 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,8 @@
 # include "minirt.h"
 
 /* colors.c */
-int	average_colors(int col1, int col2);
-int	rgb_to_int(unsigned int color[3]);
+int		average_colors(int col1, int col2);
+int		rgb_to_int(unsigned int color[3]);
+void	set_color(t_scene *scene, void *obj_color, int start);
 
 #endif

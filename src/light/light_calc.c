@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:16:36 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/12 15:46:54 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 14:15:15 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ static float diffuse_calc(t_scene *scene, t_ray *ray)
 	view_dir = vector_sub(&ray->ray_orgn, &ray->hit_p);
 	vector_normalize(view_dir);
 	if (vector_dot_prod(&ray->normal, &ray->v_ray) > 0)
-		ray->normal = *vector_mult(&ray->normal, -1);
+		ray->normal = vector_mult_dir(&ray->normal, -1);
 	dif_dot_spec[1] = vector_dot_prod(&ray->normal, light_dir);
 	temp = vector_mult(&ray->normal, 2 * dif_dot_spec[1]);
 	reflect_dir = vector_sub(temp, light_dir);
@@ -63,8 +63,6 @@ static float diffuse_calc(t_scene *scene, t_ray *ray)
 		dif_dot_spec[0] = fmax(0, dif_dot_spec[1]);
 		dif_dot_spec[2] = pow(fmax(0, vector_dot_prod(view_dir, reflect_dir)), SPEC);
 	}
-//	dif_dot_spec[0] = fmax(0, dif_dot_spec[1]);
-//	dif_dot_spec[2] = pow(fmax(0, vector_dot_prod(view_dir, reflect_dir)), SPEC);
 	free(light_dir);
 	free(view_dir);
 	free(reflect_dir);
