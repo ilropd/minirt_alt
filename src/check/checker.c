@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checker.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:54:43 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/09/22 16:22:23 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:22:53 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@ int	check_digit(const char *str, char type)
 
 	digit = 0;
 	point = 0;
+	if(!str)
+		return (1);
 	if (*str == '+' || *str == '-')
 		str++;
 	while (*str)

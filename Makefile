@@ -6,7 +6,7 @@
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/12 18:07:19 by jpancorb         ###   ########.fr        #
+#    Updated: 2025/02/13 19:11:37 by jpancorb         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = miniRT
 
 # ═══ COMPILACIÓN ══════════════════════════════════════════════════════════════#
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=leak
 LIB_FLAG = -L./Libft -lft
 MLX_FLAG = -L./minilibx-linux -lmlx -lX11 -lXext -lm -lz
 DEP_FLAG = -MMD -MP

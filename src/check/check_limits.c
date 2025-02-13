@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_limits.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/16 13:23:39 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/12 16:34:52 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 19:54:55 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	check_degree_limit(char **table, int start, int num_args)
 	end = start + num_args;
 	while (start < end)
 	{
-		if (ft_strlen(table[start]) > 3)
+		if (!table[start] || ft_strlen(table[start]) > 3)
 			return (1);
 		to_check = ft_atoi(table[start]);
 		if (to_check < 0 || to_check > 180)
