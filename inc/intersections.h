@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   intersections.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:18:10 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/30 15:57:26 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:10:43 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,4 +19,3 @@ void	get_intersections(t_scene *scene, t_ray *ray);
 void	check_ray(t_ray *ray, int color, float dist, t_type_id id);
 
 #endif
-

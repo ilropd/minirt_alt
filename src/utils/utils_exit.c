@@ -3,18 +3,17 @@
 /*                                                        :::      ::::::::   */
 /*   utils_exit.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/21 20:24:12 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/22 13:37:09 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:44:01 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "utils.h"
 
-void error_exit(t_scene *scene)
+void	error_exit(t_scene *scene)
 {
 	free_all(scene);
 	exit(1);
-
 }

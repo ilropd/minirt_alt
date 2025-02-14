@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structures_scene.h                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 18:55:40 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/13 20:13:47 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,8 +16,8 @@
 # include "structures_objects.h"
 # include "type_id.h"
 
-typedef union	u_obj		t_obj;
-typedef struct  s_item		t_item;
+typedef union u_obj		t_obj;
+typedef struct s_item	t_item;
 
 /* define size of rendering window */
 
@@ -110,7 +110,7 @@ typedef struct s_amb
 }	t_amb;
 
 /* Spot light */
-typedef struct	s_light
+typedef struct s_light
 {
 	char			*type;
 	float			brightness;
