@@ -21,8 +21,8 @@ typedef struct s_item	t_item;
 
 /* define size of rendering window */
 
-# define WIDTH 600
-# define HEIGHT 600
+# define WIDTH 1200
+# define HEIGHT 1200
 
 /* define values for calculation */
 
