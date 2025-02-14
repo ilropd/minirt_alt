@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:13:47 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/14 15:15:29 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ typedef struct s_item	t_item;
 
 /* define size of rendering window */
 
-# define WIDTH 1200
-# define HEIGHT 1200
+# define WIDTH 600
+# define HEIGHT 600
 
 /* define values for calculation */
 

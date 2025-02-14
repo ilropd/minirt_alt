@@ -6,16 +6,27 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:38:54 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:41:30 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/14 19:30:26 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "shadow_calc.h"
 
+static t_vector	*set_bias(t_ray *ray)
+{
+	t_vector	*temp;
+
+	if (ray->id == PL)
+		temp = vector_mult(&ray->normal, PL_BIAS);
+	else
+		temp = vector_mult(&ray->normal, BIAS);
+	return (temp);
+}
+
 static t_ray	*shadow_ray_init(t_scene *sc, t_ray *ray)
 {
 	t_ray		*shadow_ray;
-	t_vector	temp;
+	t_vector	*temp;
 
 	shadow_ray = malloc(sizeof(t_ray));
 	if (!shadow_ray)
@@ -25,11 +36,8 @@ static t_ray	*shadow_ray_init(t_scene *sc, t_ray *ray)
 	}
 	shadow_ray->v_ray = vector_sub_dir(&sc->light.center, &ray->hit_p);
 	vector_normalize(&shadow_ray->v_ray);
-	if (ray->id == PL)
-		temp = vector_mult_dir(&ray->normal, PL_BIAS);
-	else
-		temp = vector_mult_dir(&ray->normal, BIAS);
-	shadow_ray->ray_orgn = vector_add_dir(&ray->hit_p, &temp);
+	temp = set_bias(ray);
+	shadow_ray->ray_orgn = vector_add_dir(&ray->hit_p, temp);
 	shadow_ray->normal = (t_vector){0, 0, 0};
 	shadow_ray->hit_p = (t_vector){0, 0, 0};
 	shadow_ray->id = ray->id;
@@ -39,6 +47,7 @@ static t_ray	*shadow_ray_init(t_scene *sc, t_ray *ray)
 	shadow_ray->hit = 0;
 	shadow_ray->dot_color = 0;
 	shadow_ray->dist_curr = MAXFLOAT;
+	free(temp);
 	return (shadow_ray);
 }
 

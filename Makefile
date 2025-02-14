@@ -6,13 +6,13 @@
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/13 19:11:37 by jpancorb         ###   ########.fr        #
+#    Updated: 2025/02/14 19:32:36 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = miniRT
 
-# ═══ COMPILACIÓN ══════════════════════════════════════════════════════════════#
+# ═══ COMPILACIÓN ═════════════════════════════════════════════════════════════#
 CC = cc
 CFLAGS = -Wall -Werror -Wextra -g -fsanitize=leak
 LIB_FLAG = -L./Libft -lft
@@ -23,10 +23,9 @@ MKDIR = mkdir -p
 RMF = rm -f
 RMD = rm -rf
 
-# ═══ DIRECTORIOS ═══════════════════════════════════════════════════════════════#
+# ═══ DIRECTORIOS ════════════════════════════════════════════════════════════#
 CHECK_DIR    = check/
 COLORS_DIR   = colors/
-#FIG_DIR     = figures/
 GEOM_DIR     = geometry/
 INC_DIR      = inc/
 INIT_DIR     = init/
@@ -40,24 +39,24 @@ REND_DIR     = render/
 SRC_DIR      = src/
 UTILS_DIR    = utils/
 
-# ═══ FUENTES ═══════════════════════════════════════════════════════════════════#
+# ═══ FUENTES ══════════════════════════════════════════════════════════════#
 MAIN         = main_alt
 CHECK_FILES  = checker_ambient checker checker_camera checker_cylinder \
 			   checker_plane checker_sphere checker_light check_limits
 COLORS_FILES = colors
-#FIG_FILES   = plane
-GEOM_FILES   = vector vector_math vector_math_dir vector_prod
+GEOM_FILES   = vector vector_math vector_math_dir vector_prod vector_set
 INIT_FILES   = init_all init_figures init_unique set_figures
-INTERSEC_FILES = intersections plane_intersection sphere_intersection cylinder_intersection
+INTERSEC_FILES = intersections plane_intersection sphere_intersection \
+				 cylinder_intersection cylinder_body cylinder_caps
 LIGHT_FILES    = light_calc shadow_calc
 PARS_FILES     = parsing_gnl parsing_scene parsing_table
 REND_FILES     = ray_tracing render
-UTILS_FILES    = ft_atof utils_add utils_exit utils_free utils_parsing utils_str
+UTILS_FILES    = ft_atof utils_add utils_exit utils_free utils_parsing \
+				 utils_str
 
 SRC_FILES += $(MAIN)
 SRC_FILES += $(addprefix $(CHECK_DIR),$(CHECK_FILES))
 SRC_FILES += $(addprefix $(COLORS_DIR),$(COLORS_FILES))
-#SRC_FILES += $(addprefix $(FIG_DIR),$(FIG_FILES))
 SRC_FILES += $(addprefix $(GEOM_DIR),$(GEOM_FILES))
 SRC_FILES += $(addprefix $(INIT_DIR),$(INIT_FILES))
 SRC_FILES += $(addprefix $(INTERSEC_DIR),$(INTERSEC_FILES))

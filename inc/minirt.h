@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:34:32 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:11:15 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:13:42 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # include "colors.h"
 # include "err.h"
 # include "init.h"
+# include "param_id.h"
 # include "parsing.h"
 //# include "plane.h"
 //# include "structures.h"

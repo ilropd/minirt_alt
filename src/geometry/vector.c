@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 13:45:09 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/24 14:48:15 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/14 16:24:49 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,6 @@ t_vector	*new_vector(double x, double y, double z)
 	vec->y = y;
 	vec->z = z;
 	return (vec);
-}
-
-void	vector_set(t_vector *vec, double x, double y, double z)
-{
-	vec->x = x;
-	vec->y = y;
-	vec->z = z;
 }
 
 float	vector_len(t_vector *vec)

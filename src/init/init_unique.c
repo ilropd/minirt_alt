@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 14:06:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:31:09 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/14 17:42:50 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,8 @@ int	init_camera(t_scene *scene)
 	scene->cam.type = scene->table[0];
 	if (!scene->cam.type)
 		return (printf("%s%s", ERROR, MEM_CAM), 1);
-	vector_set(&scene->cam.center, ft_atof(scene->table[1]),
-		ft_atof(scene->table[2]), ft_atof(scene->table[3]));
-	vector_set(&scene->cam.orient, ft_atof(scene->table[4]),
-		ft_atof(scene->table[5]), ft_atof(scene->table[6]));
+	vector_set_table(&scene->cam.center, scene, 1);
+	vector_set_table(&scene->cam.orient, scene, 4);
 	scene->cam.fov = ft_atoi(scene->table[7]);
 	scene->cam.fov_rad = scene->cam.fov * (M_PI / 180);
 	printf("Camera Initialized: Type: %s, Center: %f | %f | %f, Orientation:"
@@ -49,9 +47,7 @@ int	init_ambient(t_scene *scene)
 	if (!scene->amb.type)
 		return (printf("%s%s", ERROR, MEM_AMB), 1);
 	scene->amb.ratio = ft_atof(scene->table[1]);
-	scene->amb.color[0] = ft_atoi(scene->table[2]);
-	scene->amb.color[1] = ft_atoi(scene->table[3]);
-	scene->amb.color[2] = ft_atoi(scene->table[4]);
+	set_color(scene, &scene->amb.color, 2);
 	printf("Ambient Light Initialized: Type: %s, Ratio: %.2f, Color:"
 		" (%u, %u, %u)\n", scene->amb.type, scene->amb.ratio,
 		scene->amb.color[0], scene->amb.color[1], scene->amb.color[2]);
@@ -67,12 +63,9 @@ int	init_light(t_scene *scene)
 	scene->light.type = scene->table[0];
 	if (!scene->light.type)
 		return (printf("%s%s", ERROR, MEM_LIG), 1);
-	vector_set(&scene->light.center, ft_atof(scene->table[1]),
-		ft_atof(scene->table[2]), ft_atof(scene->table[3]));
+	vector_set_table(&scene->light.center, scene, 1);
 	scene->light.brightness = ft_atof(scene->table[4]);
-	scene->light.color[0] = ft_atoi(scene->table[5]);
-	scene->light.color[1] = ft_atoi(scene->table[6]);
-	scene->light.color[2] = ft_atoi(scene->table[7]);
+	set_color(scene, &scene->light.color, 5);
 	printf("Light initialized: Type: %s, Brightness: %.2f,"
 		" Center: %f | %f | %f, Color: (%u, %u, %u)\n", scene->light.type,
 		scene->light.brightness, scene->light.center.x, scene->light.center.y,
