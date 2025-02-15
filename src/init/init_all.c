@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 16:27:04 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/12 17:05:58 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/15 18:43:18 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 static int	figures(t_scene *scene)
 {
+	if (arg_counter(scene->table) == 1)
+		return (1);
 	if (ft_strcmp(scene->table[0], "sp") == 0)
 		return (init_sphere(scene));
 	else if (ft_strcmp(scene->table[0], "pl") == 0)
@@ -25,6 +27,8 @@ static int	figures(t_scene *scene)
 
 static int	unique(t_scene *scene)
 {
+	if (arg_counter(scene->table) == 1)
+		return (1);
 	if (ft_strcmp(scene->table[0], "A") == 0)
 		return (init_ambient(scene));
 	else if (ft_strcmp(scene->table[0], "L") == 0)

@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 18:14:57 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:43:42 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/15 15:44:27 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,5 @@ int	render_init(t_scene *scene)
 	scene->mrt.img.pxl_ptr = mlx_get_data_addr(scene->mrt.connection,
 			&scene->mrt.img.bpp, &scene->mrt.img.line_len,
 			&scene->mrt.img.endian);
-//	events_init(scene->mrt);
 	return (0);
 }
