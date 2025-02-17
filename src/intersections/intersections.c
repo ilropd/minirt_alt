@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 14:12:55 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 19:39:06 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/17 22:14:28 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,10 +20,10 @@ static void	is_cam_inside(t_scene *scene)
 	while (current_item && (scene->cam.is_inside != 1))
 	{
 		if (!current_item->inside)
-        {
-            current_item = current_item->next;
-            continue	;
-        }
+		{
+			current_item = current_item->next;
+			continue ;
+		}
 		current_item->inside(scene, current_item);
 		current_item = current_item->next;
 	}
