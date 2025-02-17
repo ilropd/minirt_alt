@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 19:08:30 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:13:50 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -108,6 +108,6 @@ int	init_cylinder(t_scene *scene)
 	vector_set_vparam(&cylinder->cam_cylinder, SUB, &scene->cam.center,
 		&cylinder->bottom_cap);
 	set_color(scene, &cylinder->color, 9);
-	print_cyllinder_init(cylinder);
+	print_cylinder_init(cylinder);
 	return (0);
 }
