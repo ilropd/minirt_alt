@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:05:12 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:43:24 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:37:15 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,10 +29,6 @@ static void	camray(t_scene *scene, t_ray *ray)
 	t_vector	up_comp;
 	t_vector	hor_vert;
 
-/*	if (fabs(scene->cam.orient.x) < 1e-4 && fabs(scene->cam.orient.z) < 1e-4)
-		up = (t_vector){0, 0, 1};
-	else
-		up = (t_vector){0, 1, 0};*/
 	if (fabs(scene->cam.orient.x) < 1e-4 && fabs(scene->cam.orient.z) < 1e-4)
 		up = (t_vector){0, 0, 1};
 	else if (fabs(scene->cam.orient.y) > 0.99)
@@ -69,7 +65,6 @@ static t_ray	*ray_init(t_scene *scene)
 	ray->hit = 0;
 	ray->dot_color = 0;
 	ray->is_shadow = 0;
-//	ray->is_shadow_ray = 0;
 	ray->dist_curr = MAXFLOAT;
 	return (ray);
 }
@@ -105,7 +100,7 @@ void	ray_tracing(t_scene *scene)
 t_viewport	*get_viewport(int width, int height, t_scene *scene)
 {
 	t_viewport	*viewport;
-	float		aspect_ratio;
+	double		aspect_ratio;
 
 	viewport = malloc(sizeof(t_viewport));
 	if (!viewport)

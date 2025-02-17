@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:13:13 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:23:21 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@
 
 typedef struct s_sp_vars
 {
-	float	a;
-	float	b;
-	float	c;
-	float	discr;
-	float	dist1;
-	float	dist2;
+	double	a;
+	double	b;
+	double	c;
+	double	discr;
+	double	dist1;
+	double	dist2;
 }	t_sp_vars;
 
 typedef struct s_sphere
@@ -70,12 +70,9 @@ typedef struct s_item
 {
 	t_type_id		id;
 	t_obj			type;
-//	void			(*intersect)(t_obj *, t_ray *, t_item *);
 	void			(*intersect)(t_scene *, t_item *, t_ray *);
 	double			(*shadows)(t_item *, t_ray *);
-//	void			(*trans)(t_obj *obj, t_sc *sc);
 	void			(*free_obj)(t_obj *obj);
-//	void			(*get_norm)(t_obj *, t_hit *, t_ray *);
 	struct s_item	*next;
 }	t_item;
 

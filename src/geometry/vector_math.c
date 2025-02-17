@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:45:52 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/12 16:41:18 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:25:44 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ t_vector	*vector_add(t_vector *vec1, t_vector *vec2)
 	return (res);
 }
 
-t_vector	*vector_mult(t_vector *vec, float num)
+t_vector	*vector_mult(t_vector *vec, double num)
 {
 	t_vector	*res;
 

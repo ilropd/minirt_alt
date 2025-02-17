@@ -6,13 +6,13 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:16:36 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/15 14:26:33 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:34:49 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "light_calc.h"
 
-static int	color_calc(t_scene *scene, float intensity, unsigned int color[3])
+static int	color_calc(t_scene *scene, double intensity, unsigned int color[3])
 {
 	unsigned int	rgb[3];
 	unsigned int	amb_rgb[3];
@@ -44,7 +44,7 @@ static void	calc_light_view_dirs(t_scene *scene, t_ray *ray,
 }
 
 static void	calc_reflection(t_ray *ray, t_vector *light_dir,
-						t_vector *view_dir, float *dif_dot_spec)
+						t_vector *view_dir, double *dif_dot_spec)
 {
 	t_vector	*temp;
 	t_vector	*reflect_dir;
@@ -59,11 +59,11 @@ static void	calc_reflection(t_ray *ray, t_vector *light_dir,
 	free(reflect_dir);
 }
 
-static float	diffuse_calc(t_scene *scene, t_ray *ray)
+static double	diffuse_calc(t_scene *scene, t_ray *ray)
 {
 	t_vector	*light_dir;
 	t_vector	*view_dir;
-	float		dif_dot_spec[3];
+	double		dif_dot_spec[3];
 	int			is_shadow;
 
 	calc_light_view_dirs(scene, ray, &light_dir, &view_dir);
@@ -83,7 +83,7 @@ static float	diffuse_calc(t_scene *scene, t_ray *ray)
 
 int	light_calc(t_scene *scene, t_ray *ray, unsigned int color[3])
 {
-	float	intensity;
+	double	intensity;
 
 	intensity = diffuse_calc(scene, ray);
 	return (color_calc(scene, intensity, color));

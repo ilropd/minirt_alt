@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 19:18:50 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:37:28 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:33:20 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ static void	get_pl_normal(t_ray *ray, t_plane *pl, double dist)
 void	plane_intersection(t_scene *scene, t_item *item, t_ray *ray)
 {
 	int		color;
-	float	denom;
+	double	denom;
 	double	dist;
 	t_plane	*plane;
 
@@ -63,25 +63,3 @@ double	plane_sh_intersection(t_item *item, t_ray *ray)
 		return (MAXFLOAT);
 	return (dist);
 }
-
-/*int	plane_sh_intersection(t_item *item, t_ray *ray)
-{
-	t_plane		*plane;
-	t_vector	*temp;
-	double		dist;
-	double		denom;
-
-	plane =  item->type.pl;
-	denom = vector_dot_prod(&ray->v_ray, &plane->orient);
-	if (fabs(denom) > 1e-6)
-    {
-		temp = vector_sub(&ray->ray_orgn, &plane->center);
-        dist = (vector_dot_prod(&plane->center, &plane->orient)
-                - vector_dot_prod(temp, &plane->orient)) / denom;
-		free(temp);
-		if (dist < 1e-3)
-			return (0);
-		return (1);
-    }
-	return (0);
-}*/

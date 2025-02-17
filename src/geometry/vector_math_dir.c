@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 15:58:28 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/01/25 18:51:36 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/17 14:26:12 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ t_vector	vector_sub_dir(const t_vector *vec1, const t_vector *vec2)
 	return (res);
 }
 
-t_vector	vector_mult_dir(const t_vector *vec, float num)
+t_vector	vector_mult_dir(const t_vector *vec, double num)
 {
 	t_vector	res;
 
