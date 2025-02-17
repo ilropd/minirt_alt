@@ -6,7 +6,7 @@
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/14 19:32:36 by irozhkov         ###   ########.fr        #
+#    Updated: 2025/02/17 21:36:39 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = miniRT
 
 # ═══ COMPILACIÓN ═════════════════════════════════════════════════════════════#
 CC = cc
-CFLAGS = -Wall -Werror -Wextra -g -fsanitize=leak
+CFLAGS = -Wall -Werror -Wextra -g -fsanitize=address
 LIB_FLAG = -L./Libft -lft
 MLX_FLAG = -L./minilibx-linux -lmlx -lX11 -lXext -lm -lz
 DEP_FLAG = -MMD -MP
@@ -48,7 +48,7 @@ GEOM_FILES   = vector vector_math vector_math_dir vector_prod vector_set
 INIT_FILES   = init_all init_figures init_unique set_figures
 INTERSEC_FILES = intersections plane_intersection sphere_intersection \
 				 cylinder_intersection cylinder_body cylinder_caps
-LIGHT_FILES    = light_calc shadow_calc
+LIGHT_FILES    = check_cam_inside check_light_inside light_calc shadow_calc
 PARS_FILES     = parsing_gnl parsing_scene parsing_table
 REND_FILES     = ray_tracing render
 UTILS_FILES    = ft_atof utils_add utils_exit utils_free utils_parsing \

@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/07 14:06:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/14 17:42:50 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:07:25 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,7 @@ int	init_camera(t_scene *scene)
 	vector_set_table(&scene->cam.orient, scene, 4);
 	scene->cam.fov = ft_atoi(scene->table[7]);
 	scene->cam.fov_rad = scene->cam.fov * (M_PI / 180);
+	scene->cam.is_inside = 0;
 	printf("Camera Initialized: Type: %s, Center: %f | %f | %f, Orientation:"
 		" %f | %f | %f, FOV: %d, FOV_RAD: %f\n", scene->cam.type,
 		scene->cam.center.x, scene->cam.center.y, scene->cam.center.z,

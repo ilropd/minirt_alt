@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:16:36 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 14:34:49 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:44:36 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -85,6 +85,8 @@ int	light_calc(t_scene *scene, t_ray *ray, unsigned int color[3])
 {
 	double	intensity;
 
+	if (scene->cam.is_inside == 1)
+		return (DEFAULT_COLOR);
 	intensity = diffuse_calc(scene, ray);
 	return (color_calc(scene, intensity, color));
 }

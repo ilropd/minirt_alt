@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:30:05 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 14:36:44 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/17 15:18:34 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,8 @@ typedef struct s_item	t_item;
 
 # define WIDTH 600
 # define HEIGHT 600
+
+# define DEFAULT_COLOR 0
 
 /* define values for calculation */
 
@@ -98,6 +100,7 @@ typedef struct s_cam
 	t_vector		orient;
 	unsigned int	fov;
 	float			fov_rad;
+	int				is_inside;
 }	t_cam;
 
 /* Ambient light */
