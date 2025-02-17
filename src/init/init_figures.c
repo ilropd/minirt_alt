@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 18:05:39 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:08:30 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ static void	find_cy_caps(t_cylinder *cy)
 	vector_set(&cy->bottom_cap, cy->center.x, cy->center.y, cy->center.z);
 }
 
-static void	print_cyllinder_init(t_cylinder *cylinder)
+static void	print_cylinder_init(t_cylinder *cylinder)
 {
 	printf("Cylinder Initialized: Type: %s, Center: %f | %f | %f,"
 		" Orient: %f | %f | %f, Diameter: %f, Radius: %f, Height: %f,"
