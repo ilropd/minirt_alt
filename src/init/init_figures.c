@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/14 17:30:22 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/17 19:13:50 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,10 @@ int	init_sphere(t_scene *scene)
 	sphere->diameter = ft_atof(scene->table[4]);
 	sphere->radius = sphere->diameter / 2;
 	set_color(scene, &sphere->color, 5);
-	printf("Sphere Initialized: Type: %s, Center: %f | %f | %f, Diameter: %f, Radius: %f, Color: (%u, %u, %u)\n", sphere->type, sphere->center.x, sphere->center.y, sphere->center.z, sphere->diameter, sphere->radius, sphere->color[0], sphere->color[1], sphere->color[2]);
+	printf("Sphere Initialized: Type: %s, Center: %f | %f | %f, Diameter: %f,"
+		" Radius: %f, Color: (%u, %u, %u)\n", sphere->type, sphere->center.x,
+		sphere->center.y, sphere->center.z, sphere->diameter, sphere->radius,
+		sphere->color[0], sphere->color[1], sphere->color[2]);
 	return (0);
 }
 
@@ -72,6 +75,17 @@ static void	find_cy_caps(t_cylinder *cy)
 	vector_set(&cy->bottom_cap, cy->center.x, cy->center.y, cy->center.z);
 }
 
+static void	print_cylinder_init(t_cylinder *cylinder)
+{
+	printf("Cylinder Initialized: Type: %s, Center: %f | %f | %f,"
+		" Orient: %f | %f | %f, Diameter: %f, Radius: %f, Height: %f,"
+		" Color: (%u, %u, %u)\n", cylinder->type, cylinder->center.x,
+		cylinder->center.y, cylinder->center.z, cylinder->orient.x,
+		cylinder->orient.y, cylinder->orient.z, cylinder->diameter,
+		cylinder->radius, cylinder->height, cylinder->color[0],
+		cylinder->color[1], cylinder->color[2]);
+}
+
 int	init_cylinder(t_scene *scene)
 {
 	t_cylinder	*cylinder;
@@ -94,6 +108,6 @@ int	init_cylinder(t_scene *scene)
 	vector_set_vparam(&cylinder->cam_cylinder, SUB, &scene->cam.center,
 		&cylinder->bottom_cap);
 	set_color(scene, &cylinder->color, 9);
-	printf("Cylinder Initialized: Type: %s, Center: %f | %f | %f, Orient: %f | %f | %f, Diameter: %f, Radius: %f, Height: %f, Color: (%u, %u, %u)\n", cylinder->type, cylinder->center.x, cylinder->center.y, cylinder->center.z, cylinder->orient.x, cylinder->orient.y, cylinder->orient.z, cylinder->diameter, cylinder->radius, cylinder->height, cylinder->color[0], cylinder->color[1], cylinder->color[2]);
+	print_cylinder_init(cylinder);
 	return (0);
 }

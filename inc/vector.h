@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 13:38:50 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 14:26:33 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/17 18:07:33 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@ t_vector	vector_mult_dir(const t_vector *vec, double num);
 
 /* vector_set.c */
 void		vector_set(t_vector *vec, double x, double y, double z);
-void	vector_set_table(t_vector *vec, t_scene *scene, int start);
+void		vector_set_table(t_vector *vec, t_scene *scene, int start);
 void		vector_set_vparam(t_vector *vec, t_param_id param,
-							const t_vector *vec1, const t_vector *vec2);
+				const t_vector *vec1, const t_vector *vec2);
 void		vector_set_sparam(t_vector *vec, t_param_id param,
-							const t_vector *vec1, double num);
+				const t_vector *vec1, double num);
