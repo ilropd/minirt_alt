@@ -6,7 +6,7 @@
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/18 15:18:23 by irozhkov         ###   ########.fr        #
+#    Updated: 2025/02/18 17:12:38 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,7 +69,7 @@ SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 DEPS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
 
-# ═══ REGLAS ════════════════════════════════════════════════════════════════════#
+# ═══ REGLAS ═════════════════════════════════════════════════════════════════#
 
 all: $(LIBFT_DIR)libft.a $(MLX_DIR)libmlx.a $(NAME)
 
