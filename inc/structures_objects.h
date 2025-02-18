@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 16:06:53 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/18 15:23:45 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,7 @@ typedef struct s_item
 {
 	t_type_id		id;
 	t_obj			type;
+	void			(*update_cam)(t_scene *, t_item *);
 	void			(*intersect)(t_scene *, t_item *, t_ray *);
 	void			(*inside)(t_scene *, t_item *);
 	double			(*shadows)(t_item *, t_ray *);

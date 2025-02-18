@@ -6,7 +6,7 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 15:02:38 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/24 15:55:00 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:13:48 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,7 @@ int	parsing_scene(char **argv, t_scene *scene)
 		str = get_next_line(fd);
 		line++;
 	}
+	update_cam_vectors(scene);
 	close(fd);
 	return (0);
 }

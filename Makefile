@@ -6,7 +6,7 @@
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/17 21:36:39 by irozhkov         ###   ########.fr        #
+#    Updated: 2025/02/18 15:18:23 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -45,7 +45,7 @@ CHECK_FILES  = checker_ambient checker checker_camera checker_cylinder \
 			   checker_plane checker_sphere checker_light check_limits
 COLORS_FILES = colors
 GEOM_FILES   = vector vector_math vector_math_dir vector_prod vector_set
-INIT_FILES   = init_all init_figures init_unique set_figures
+INIT_FILES   = init_all init_figures init_unique set_figures update_cam_vectors
 INTERSEC_FILES = intersections plane_intersection sphere_intersection \
 				 cylinder_intersection cylinder_body cylinder_caps
 LIGHT_FILES    = check_cam_inside check_light_inside light_calc shadow_calc

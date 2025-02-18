@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 22:09:26 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:16:56 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,7 @@ int	init_sphere(t_scene *scene)
 	if (!sphere->type)
 		return (printf("%s%s", ERROR, MEM_SP), 1);
 	vector_set_table(&sphere->center, scene, 1);
-	vector_set_vparam(&sphere->cam_sphere, SUB,
-		&scene->cam.center, &sphere->center);
+	vector_set(&sphere->cam_sphere, 0, 0, 0);
 	sphere->diameter = ft_atof(scene->table[4]);
 	sphere->radius = sphere->diameter / 2;
 	set_color(scene, &sphere->color, 5);
@@ -54,8 +53,7 @@ int	init_plane(t_scene *scene)
 	vector_set_table(&plane->center, scene, 1);
 	vector_set(&plane->orient, ft_atof(scene->table[4]),
 		ft_atof(scene->table[5]), ft_atof(scene->table[6]));
-	vector_set_vparam(&plane->cam_plane, SUB, &scene->cam.center,
-		&plane->center);
+	vector_set(&plane->cam_plane, 0, 0, 0);
 	set_color(scene, &plane->color, 7);
 	printf("Plane Initialized: Type: %s, Center: %f | %f | %f, Orient:"
 		" %f | %f | %f, Color: (%u, %u, %u)\n", plane->type, plane->center.x,
@@ -105,8 +103,7 @@ int	init_cylinder(t_scene *scene)
 	cylinder->radius = cylinder->diameter / 2;
 	cylinder->height = ft_atof(scene->table[8]);
 	find_cy_caps(cylinder);
-	vector_set_vparam(&cylinder->cam_cylinder, SUB, &scene->cam.center,
-		&cylinder->bottom_cap);
+	vector_set(&cylinder->cam_cylinder, 0, 0, 0);
 	set_color(scene, &cylinder->color, 9);
 	print_cylinder_init(cylinder);
 	return (0);

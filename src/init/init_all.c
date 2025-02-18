@@ -6,11 +6,28 @@
 /*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 16:27:04 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/15 18:43:18 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/18 16:52:22 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "init.h"
+
+void	update_cam_vectors(t_scene *scene)
+{
+	t_item	*current_item;
+
+	current_item = scene->objs;
+	while (current_item)
+	{
+		if (!current_item->update_cam)
+		{
+			current_item = current_item->next;
+			continue ;
+		}
+		current_item->update_cam(scene, current_item);
+		current_item = current_item->next;
+	}
+}
 
 static int	figures(t_scene *scene)
 {
