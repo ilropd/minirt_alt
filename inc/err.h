@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:13:20 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:10:08 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:02:47 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,9 @@
 # define ARGS_WAMB "Wrong ambient light arguments\n"
 # define ARGS_WCAM "Wrong camera arguments\n"
 # define ARGS_WLIG "Wrong light arguments\n"
+# define ARGS_SPHERE "Wrong sphere arguments\n"
+# define ARGS_PLANE "Wrong plane arguments\n"
+# define ARGS_CYLINDER "Wrong cylinder arguments\n"
 # define ARGS_NUNIQUE_A "Ambient light is not unique\n"
 # define ARGS_NUNIQUE_C "Camera is not unique\n"
 # define ARGS_NUNIQUE_L "Light is not unique\n"
