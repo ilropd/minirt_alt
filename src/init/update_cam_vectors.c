@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   update_cam_vectors.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:44 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 16:16:09 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:22:19 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 void	update_sphere(t_scene *sc, t_item *item)
 {
-	t_sphere *sp;
+	t_sphere	*sp;
 
 	sp = item->type.sp;
 	vector_set_vparam(&sp->cam_sphere, SUB, &sc->cam.center, &sp->center);

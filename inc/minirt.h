@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:34:32 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/14 16:13:42 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/18 20:21:07 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,8 +32,6 @@
 # include "init.h"
 # include "param_id.h"
 # include "parsing.h"
-//# include "plane.h"
-//# include "structures.h"
 # include "structures_objects.h"
 # include "structures_scene.h"
 # include "utils.h"
