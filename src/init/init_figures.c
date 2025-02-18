@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 16:16:56 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/18 19:23:25 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ int	init_sphere(t_scene *scene)
 	sphere = malloc(sizeof(t_sphere));
 	if (!sphere)
 		return (printf("%s%s", ERROR, MEM_SP), 1);
+	if (check_sphere(scene->table))
+		error_exit_print(ARGS_SPHERE);
 	set_sphere(obj, sphere);
 	sphere->type = scene->table[0];
 	if (!sphere->type)
@@ -46,6 +48,8 @@ int	init_plane(t_scene *scene)
 	plane = malloc(sizeof(t_plane));
 	if (!plane)
 		return (printf("%s%s", ERROR, MEM_PL), 1);
+	if (check_plane(scene->table))
+		error_exit_print(ARGS_PLANE);
 	set_plane(obj, plane);
 	plane->type = scene->table[0];
 	if (!plane->type)
@@ -93,6 +97,8 @@ int	init_cylinder(t_scene *scene)
 	cylinder = malloc(sizeof(t_cylinder));
 	if (!cylinder)
 		return (printf("%s%s", ERROR, MEM_CY), 1);
+	if (check_cylinder(scene->table))
+		error_exit_print(ARGS_CYLINDER);
 	set_cylinder(obj, cylinder);
 	cylinder->type = scene->table[0];
 	if (!cylinder->type)
