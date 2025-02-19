@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 15:38:54 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/14 19:30:26 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:54:00 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,7 @@ static t_ray	*shadow_ray_init(t_scene *sc, t_ray *ray)
 	shadow_ray = malloc(sizeof(t_ray));
 	if (!shadow_ray)
 	{
+		printf("%s%s", ERROR, MEM);
 		free_all(sc);
 		exit(1);
 	}
