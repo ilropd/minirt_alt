@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:05:12 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/19 12:42:22 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 18:55:24 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ static t_ray	*ray_init(t_scene *scene)
 	ray = malloc(sizeof(t_ray));
 	if (!ray)
 	{
+		printf("%s%s", ERROR, MEM);
 		free_all(scene);
 		exit(1);
 	}
@@ -105,6 +106,7 @@ t_viewport	*get_viewport(int width, int height, t_scene *scene)
 	viewport = malloc(sizeof(t_viewport));
 	if (!viewport)
 	{
+		printf("%s%s", ERROR, MEM);
 		free_all(scene);
 		exit(1);
 	}
