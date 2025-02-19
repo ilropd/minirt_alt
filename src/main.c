@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/02 15:34:41 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/19 14:21:00 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:20:04 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,19 @@
 
 static void	file_checker(char **argv)
 {
-	struct stat	st;
-	int			fd;
+	int		fd;
+	char	buff[1];
 
-	if (access(argv[1], F_OK) != 0)
-	{
-		printf("%s%s", ERROR, FILE_NE);
-		exit(1);
-	}
-	if (stat(argv[1], &st) != 0)
-	{
-		printf("%s%s", ERROR, FILE_RET);
-		exit(1);
-	}
-	if (st.st_size == 0)
-	{
-		printf("%s%s", ERROR, FILE_E);
-		exit(1);
-	}
 	fd = open(argv[1], O_RDONLY);
 	if (fd == -1)
 	{
 		printf("%s%s", ERROR, FILE_RO);
+		exit(1);
+	}
+	if (read(fd, buff, 1) == 0)
+	{
+		printf("%s%s", ERROR, FILE_E);
+		close(fd);
 		exit(1);
 	}
 	close(fd);

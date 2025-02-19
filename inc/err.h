@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:13:20 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 19:02:47 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:20:08 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,8 @@
 # define WARN "\033[1;33mWarning\n\033[0m"
 
 /* Errors of file checking*/
-# define FILE_NE "File doesn't exist\n"
 # define FILE_E "File is empty\n"
-# define FILE_RET "Cannot retrieve file information\n"
-# define FILE_RO "Can't open or read file\n"
+# define FILE_RO "Can't open or read file, or file doesn't exist\n"
 # define FILE_WF "Incorrect format of the file\n"
 
 /* Errors of parsing */

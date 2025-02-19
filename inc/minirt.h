@@ -6,20 +6,18 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:34:32 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/19 14:20:22 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 15:23:54 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef MINIRT_H
 # define MINIRT_H
 
-# include <ctype.h>
 # include <fcntl.h>
 # include <math.h>
 # include <stddef.h>
 # include <stdio.h> 
 # include <stdlib.h>
-# include <sys/stat.h>
 # include <unistd.h>
 
 # include "libft.h"
