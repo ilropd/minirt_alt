@@ -3,46 +3,58 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: irozhkov <irozhkov@student.42barcel>       +#+  +:+       +#+         #
+#   By: irozhkov <irozhkov@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 14:03:00 by irozhkov          #+#    #+#              #
-#    Updated: 2024/09/22 17:57:54 by irozhkov         ###   ########.fr        #
+#    Updated: 2025/02/19 20:04:44 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = libft.a
 HEADER = libft.h
 
-CC = cc
 CFLAGS = -Wall -Wextra -Werror
+CC = cc
+RM = rm -f
+AR = ar rcs
 
-SRC = $(shell find . -name "*.c" ! -name "*_bonus.c")
-SRC_BONUS = $(shell find . -name "*_bonus.c")
+SRC = ft_atoi ft_isprint ft_memmove ft_strchr ft_strmapi ft_toupper \
+	  ft_bzero ft_itoa ft_memset ft_strdup ft_strncmp ft_calloc \
+	  ft_putchar_fd ft_striteri ft_strnstr ft_isalnum ft_putendl_fd \
+	  ft_strjoin ft_strrchr ft_isalpha ft_memchr ft_putnbr_fd \
+	  ft_strlcat ft_strtrim ft_isascii ft_memcmp ft_putstr_fd \
+	  ft_strlcpy ft_substr ft_isdigit ft_memcpy ft_split ft_strlen \
+	  ft_tolower
 
-OBJ = $(patsubst %.c,%.o,$(SRC))
-OBJ_BONUS = $(patsubst %.c,%.o,$(SRC_BONUS))
+SRC_BONUS = ft_lstadd_back_bonus ft_lstadd_front_bonus \
+			ft_lstclear_bonus ft_lstdelone_bonus ft_lstiter_bonus \
+			ft_lstlast_bonus t_lstmap_bonus ft_lstnew_bonus \
+			ft_lstsize_bonus
 
-COMPILE = $(CC) $(CFLAGS) -c $< -o $@
-LIB = ar rc $(NAME)
-REMOVE = rm -f
+
+SRCS = $(addsuffix .c, $(SRC))
+SRCS_BONUS = $(addsuffix _bonus.c, $(SRC_BONUS))
+
+OBJS = $(SRCS:.c=.o)
+OBJS_BONUS = $(SRCS_BONUS:.c=.o)
+
+.c.o:
+	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+
+$(NAME): $(OBJS) Makefile
+	$(AR) $(NAME) $(OBJS)
+
+bonus: $(OBJS_BONUS)
+	$(AR) $(NAME) $(OBJS_BONUS)
 
 all: $(NAME)
 
-$(NAME): $(OBJ) Makefile
-	$(LIB) $(OBJ)
-
-%.o: %.c $(HEADER)
-	$(COMPILE)
-
-bonus: $(OBJ_BONUS)
-	$(LIB) $(OBJ_BONUS)
-
 clean:
-	$(REMOVE) $(OBJ)
+	$(RM) $(OBJS) $(OBJS_BONUS)
 
 fclean: clean
-	$(REMOVE) $(NAME)
+	$(RM) $(NAME)
 
-re: fclean all
+re:	fclean all
 
-.PHONY: all clean fclean re bonus
+.PHONY:		all bonus clean fclean re

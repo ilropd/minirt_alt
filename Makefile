@@ -6,7 +6,7 @@
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/19 14:58:48 by irozhkov         ###   ########.fr        #
+#    Updated: 2025/02/19 21:34:46 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -69,11 +69,14 @@ SRCS = $(addprefix $(SRC_DIR), $(addsuffix .c, $(SRC_FILES)))
 OBJS = $(addprefix $(OBJ_DIR), $(addsuffix .o, $(SRC_FILES)))
 DEPS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
 
+LIBFT = $(LIBFT_DIR)libft.a
+MINILIBX = $(MLX_DIR)libmlx.a
+
 # ═══ REGLAS ═════════════════════════════════════════════════════════════════#
 
-all: $(LIBFT_DIR)libft.a $(MLX_DIR)libmlx.a $(NAME)
+all: $(LIBFT) $(MINILIBX) $(NAME)
 
-$(NAME): $(OBJS) $(LIBFT_DIR)libft.a $(MLX_DIR)libmlx.a Makefile
+$(NAME): $(OBJS) $(LIBFT) $(MINILIBX) Makefile
 	$(CC) $(CFLAGS) $(OBJS) $(LIB_FLAG) $(MLX_FLAG) -o $(NAME)
 
 $(OBJ_DIR)%.o: $(SRC_DIR)%.c
@@ -83,11 +86,14 @@ $(OBJ_DIR)%.o: $(SRC_DIR)%.c
 $(OBJ_DIR):
 	$(MKDIR) $(OBJ_DIR)
 
-$(LIBFT_DIR)libft.a:
-	$(MAKE) -C $(LIBFT_DIR) all
+$(LIBFT):
+	$(MAKE) -C $(LIBFT_DIR)
 
-$(MLX_DIR)libmlx.a:
-	-$(MAKE) -C $(MLX_DIR) all CFLAGS="-O3 -w -I/usr/include" > /dev/null 2>&1
+$(MINILIBX):
+	$(MAKE) -C $(MLX_DIR) all
+
+$(OBJS):
+	$(LIBFT) $(MINILIBX)
 
 clean:
 	$(RMD) $(OBJ_DIR)
@@ -103,4 +109,5 @@ fclean: clean
 re: fclean all
 
 -include $(DEPS)
+
 .PHONY: all clean fclean re
