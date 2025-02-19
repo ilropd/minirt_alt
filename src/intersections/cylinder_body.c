@@ -6,11 +6,11 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:23:56 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/14 18:23:25 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:45:48 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cylinder_intersection.h"
+#include "intersections.h"
 
 static int	cy_limit(t_cylinder *cylinder, t_ray *ray, double dist)
 {

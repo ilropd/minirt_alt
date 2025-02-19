@@ -6,11 +6,11 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:05:12 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 14:37:15 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:42:22 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "render.h"
 
 static t_vector	right_comp_calc(t_vector *up, t_scene *scene, double ray_x)
 {

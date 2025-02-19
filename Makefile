@@ -6,7 +6,7 @@
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/18 20:27:45 by jpancorb         ###   ########.fr        #
+#    Updated: 2025/02/19 14:58:48 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ SRC_DIR      = src/
 UTILS_DIR    = utils/
 
 # ═══ FUENTES ══════════════════════════════════════════════════════════════#
-MAIN         = main_alt
+MAIN         = main
 CHECK_FILES  = checker_ambient checker checker_camera checker_cylinder \
 			   checker_plane checker_sphere checker_light check_limits
 COLORS_FILES = colors

@@ -6,11 +6,11 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 19:18:50 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 14:33:20 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:50:06 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "plane_intersection.h"
+#include "intersections.h"
 
 static void	get_pl_normal(t_ray *ray, t_plane *pl, double dist)
 {

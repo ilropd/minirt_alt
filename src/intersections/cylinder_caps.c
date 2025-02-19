@@ -6,11 +6,11 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/25 16:23:56 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/14 18:53:19 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:46:01 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cylinder_intersection.h"
+#include "intersections.h"
 
 static void	check_hit(t_cylinder *cy, t_ray *ray, double *d_caps, double dist)
 {

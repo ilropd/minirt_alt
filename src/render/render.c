@@ -6,11 +6,11 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 18:14:57 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 15:29:39 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:40:05 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "minirt.h"
+#include "render.h"
 
 int	destroy_handler(t_scene *scene)
 {

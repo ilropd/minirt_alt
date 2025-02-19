@@ -6,11 +6,11 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 15:51:29 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 16:09:55 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/19 12:50:56 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "sphere_intersection.h"
+#include "intersections.h"
 
 static void	get_sp_normal(t_ray *ray, t_sphere *sp, t_sp_vars *var)
 {
