@@ -6,7 +6,7 @@
 #    By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/09/22 14:32:18 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/19 21:48:51 by irozhkov         ###   ########.fr        #
+#    Updated: 2025/02/20 11:45:13 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -72,23 +72,23 @@ DEPS = $(addprefix $(OBJ_DIR), $(addsuffix .d, $(SRC_FILES)))
 
 # ═══ REGLAS ═════════════════════════════════════════════════════════════════#
 
-all: $(LIBFT_DIR)libft.a $(MLX_DIR)libmlx.a $(NAME)
+all: $(LIBFT_DIR)libft $(MLX_DIR)libmlx $(NAME)
 
 $(NAME): $(OBJS) $(LIBFT_DIR)libft.a $(MLX_DIR)libmlx.a Makefile
 	$(CC) $(CFLAGS) $(OBJS) $(LIB_FLAG) $(MLX_FLAG) -o $(NAME)
 
-$(OBJ_DIR)%.o: $(SRC_DIR)%.c
+$(OBJ_DIR)%.o: $(SRC_DIR)%.c $(LIBFT_DIR)libft.a $(MLX_DIR)libmlx.a Makefile
 	$(MKDIR) $(dir $@)
 	$(CC) $(CFLAGS) $(DEP_FLAG) $(INCLUDE) -c $< -o $@
 
 $(OBJ_DIR):
 	$(MKDIR) $(OBJ_DIR)
 
-$(LIBFT_DIR)libft.a:
+$(LIBFT_DIR)libft:
 	$(MAKE) -C $(LIBFT_DIR) all
 
-$(MLX_DIR)libmlx.a:
-	-$(MAKE) -C $(MLX_DIR) all CFLAGS="-O3 -w -I/usr/include" > /dev/null 2>&1
+$(MLX_DIR)libmlx:
+	-$(MAKE) -C $(MLX_DIR) all #CFLAGS="-O3 -w -I/usr/include" > /dev/null 2>&1
 
 clean:
 	$(RMD) $(OBJ_DIR)

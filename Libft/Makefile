@@ -6,7 +6,7 @@
 #   By: irozhkov <irozhkov@student.42barcel>       +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/09/27 14:03:00 by irozhkov          #+#    #+#              #
-#    Updated: 2025/02/19 20:04:44 by irozhkov         ###   ########.fr        #
+#    Updated: 2025/02/20 11:41:39 by irozhkov         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,8 +38,8 @@ SRCS_BONUS = $(addsuffix _bonus.c, $(SRC_BONUS))
 OBJS = $(SRCS:.c=.o)
 OBJS_BONUS = $(SRCS_BONUS:.c=.o)
 
-.c.o:
-	$(CC) $(CFLAGS) -c $< -o $(<:.c=.o)
+%.o:%.c Makefile
+	$(CC) $(CFLAGS) -c $< -o $@
 
 $(NAME): $(OBJS) Makefile
 	$(AR) $(NAME) $(OBJS)
