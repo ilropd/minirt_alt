@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils_free.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/18 13:27:47 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/12/07 16:36:47 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:10:55 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,10 @@ void	free_cylinder(t_obj *obj)
 {
 	if (obj->cy)
 		free(obj->cy);
+}
+
+void	free_cone(t_obj *obj)
+{
+	if (obj->co)
+		free(obj->co);
 }

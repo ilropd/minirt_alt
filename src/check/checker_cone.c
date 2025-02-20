@@ -1,25 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   type_id.h                                          :+:      :+:    :+:   */
+/*   checker_cone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/30 16:19:10 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/20 21:27:15 by jpancorb         ###   ########.fr       */
+/*   Created: 2025/02/20 21:03:10 by jpancorb          #+#    #+#             */
+/*   Updated: 2025/02/20 21:04:43 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef TYPE_ID_H
-# define TYPE_ID_H
+#include "check.h"
 
-typedef enum e_type_id
+int	check_cone(char **table)
 {
-	SP,
-	PL,
-	CY,
-	CO,
-	NONE
-}	t_type_id;
+	int	result;
 
-#endif
+	result = 0;
+	result += arg_counter(table);
+	result += check_digit_cycle(table, 'f', 1, 8);
+	result += check_digit_cycle(table, 'd', 9, 3);
+	result += check_vector_limit(table, 4, 3);
+	result += check_zerof_limit(table, 7, 2);
+	result += check_rgb_limit(table, 9, 3);
+	return (result);
+}

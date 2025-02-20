@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/03 12:23:21 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 20:21:10 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:10:55 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,8 @@ void			free_all(t_scene *scene);
 void			free_sphere(t_obj *obj);
 void			free_plane(t_obj *obj);
 void			free_cylinder(t_obj *obj);
+void			free_cone(t_obj *obj);
+
 
 /* utils_parsing.c */
 unsigned int	parse_int(char **str);

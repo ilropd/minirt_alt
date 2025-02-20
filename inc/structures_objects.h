@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 15:23:45 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:28:30 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,11 +59,24 @@ typedef struct s_cylinder
 	unsigned int	color[3];
 }	t_cylinder;
 
+typedef struct s_cone
+{
+	char			*type;
+	t_vector		vertex;    // Vértice (apex) del cono.
+	t_vector		orient;    // Dirección del eje del cono (normalizada).
+	t_vector		cam_cone;  // Para cálculos relativos a la cámara.
+	double			angle;     // Ángulo de apertura del cono (en grados).
+	double			height;    // Altura del cono.
+	double			radius;    // Radio de la base (calculado a partir de height y angle).
+	unsigned int	color[3];
+}	t_cone;
+
 typedef union u_obj
 {
 	t_sphere	*sp;
 	t_plane		*pl;
 	t_cylinder	*cy;
+	t_cone		*co;
 }	t_obj;
 
 typedef struct s_item

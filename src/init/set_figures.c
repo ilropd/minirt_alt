@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   set_figures.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:55:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 15:25:15 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/20 21:10:24 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,4 +42,15 @@ void	set_cylinder(t_item *obj, t_cylinder *cylinder)
 	obj->intersect = cylinder_intersection;
 	obj->inside = cam_inside_cylinder;
 	obj->shadows = cylinder_sh_intersection;
+}
+
+void	set_cone(t_item *obj, t_cone *cone)
+{
+	obj->id = CO;             // Asegúrate de definir la macro CO para el cono.
+	obj->type.co = cone;
+	obj->free_obj = free_cone;
+	obj->update_cam = update_cone;
+	obj->intersect = cone_intersection;
+	obj->inside = cam_inside_cone;
+	obj->shadows = cone_sh_intersection;
 }
