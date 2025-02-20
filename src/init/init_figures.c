@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 19:23:25 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/20 19:47:43 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ int	init_plane(t_scene *scene)
 	vector_set_table(&plane->center, scene, 1);
 	vector_set(&plane->orient, ft_atof(scene->table[4]),
 		ft_atof(scene->table[5]), ft_atof(scene->table[6]));
+	vector_normalize(&plane->orient);
 	vector_set(&plane->cam_plane, 0, 0, 0);
 	set_color(scene, &plane->color, 7);
 	printf("Plane Initialized: Type: %s, Center: %f | %f | %f, Orient:"
@@ -105,6 +106,7 @@ int	init_cylinder(t_scene *scene)
 		return (printf("%s%s", ERROR, MEM_CY), 1);
 	vector_set_table(&cylinder->center, scene, 1);
 	vector_set_table(&cylinder->orient, scene, 4);
+	vector_normalize(&cylinder->orient);
 	cylinder->diameter = ft_atof(scene->table[7]);
 	cylinder->radius = cylinder->diameter / 2;
 	cylinder->height = ft_atof(scene->table[8]);
