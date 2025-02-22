@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 12:16:36 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 17:54:20 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/21 21:28:28 by irozhkov         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ static double	diffuse_calc(t_scene *scene, t_ray *ray)
 	calc_reflection(ray, light_dir, view_dir, dif_dot_spec);
 	is_shadow = shadow_calc(scene, ray);
 	if (is_shadow == 1)
+	{
 		dif_dot_spec[0] = 0;
+		dif_dot_spec[2] = 0;
+	}
 	else
 		dif_dot_spec[0] = fmax(0, dif_dot_spec[1]);
 	free(light_dir);
