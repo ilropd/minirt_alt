@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:24:06 by irozhkov          #+#    #+#             */
-/*   Updated: 2024/10/22 16:15:11 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:58:45 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,9 @@ int	check_camera(char **table);
 
 /* checker_cylinder.c */
 int	check_cylinder(char **table);
+
+/* checker_cone.c */
+int	check_cone(char **table);
 
 /* checker_plane.c */
 int	check_plane(char **table);

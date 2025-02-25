@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/17 15:42:45 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/20 21:28:30 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:47:51 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,12 +62,12 @@ typedef struct s_cylinder
 typedef struct s_cone
 {
 	char			*type;
-	t_vector		vertex;    // Vértice (apex) del cono.
-	t_vector		orient;    // Dirección del eje del cono (normalizada).
-	t_vector		cam_cone;  // Para cálculos relativos a la cámara.
-	double			angle;     // Ángulo de apertura del cono (en grados).
-	double			height;    // Altura del cono.
-	double			radius;    // Radio de la base (calculado a partir de height y angle).
+	t_vector		vertex;
+	t_vector		orient;
+	t_vector		cam_cone;
+	double			angle;
+	double			height;
+	double			radius;
 	unsigned int	color[3];
 }	t_cone;
 

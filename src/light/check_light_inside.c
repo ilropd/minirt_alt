@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_light_inside.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 21:34:26 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 21:48:49 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:27:47 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,5 +50,23 @@ int	light_inside_cylinder(t_scene *sc, t_cylinder *cy)
 			<= pow(cy->radius, 2))
 			return (1);
 	}
+	return (0);
+}
+
+int	light_inside_cone(t_scene *scene, t_cone *cone)
+{
+	t_vector	d;
+	double		proj;
+	double		dist;
+	double		allowed_radius;
+
+	d = vector_sub_dir(&scene->light.center, &cone->vertex);
+	proj = vector_dot_prod(&d, &cone->orient);
+	if (proj < 0 || proj > cone->height)
+		return (0);
+	dist = sqrt(vector_dot_prod(&d, &d) - proj * proj);
+	allowed_radius = (proj * cone->radius) / cone->height;
+	if (dist <= allowed_radius)
+		return (1);
 	return (0);
 }

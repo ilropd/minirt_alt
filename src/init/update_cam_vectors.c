@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/18 15:09:44 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/20 21:12:23 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/25 20:58:51 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,11 +37,11 @@ void	update_cylinder(t_scene *sc, t_item *item)
 		&cy->bottom_cap);
 }
 
-// void	update_cone(t_scene *sc, t_item *item)
-// {
-// 	t_cone	*co;
+void	update_cone(t_scene *sc, t_item *item)
+{
+	t_cone	*cone;
 
-// 	co = item->type.co;
-// 	vector_set_vparam(&co->cam_cone, SUB, &sc->cam.center,
-// 		&co->bottom_cap);
-// }
+	cone = item->type.co;
+	vector_set_vparam(&cone->cam_cone, SUB, &sc->cam.center, &cone->vertex);
+}
+

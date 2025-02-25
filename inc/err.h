@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/15 15:13:20 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/19 15:20:08 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:56:26 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,6 +35,7 @@
 # define ARGS_SPHERE "Wrong sphere arguments\n"
 # define ARGS_PLANE "Wrong plane arguments\n"
 # define ARGS_CYLINDER "Wrong cylinder arguments\n"
+# define ARGS_CONE "Wrong cone arguments\n"
 # define ARGS_NUNIQUE_A "Ambient light is not unique\n"
 # define ARGS_NUNIQUE_C "Camera is not unique\n"
 # define ARGS_NUNIQUE_L "Light is not unique\n"
@@ -47,6 +48,8 @@
 # define MEM_SP "Memory allocation for sphere failed\n"
 # define MEM_PL "Memory allocation for plane failed\n"
 # define MEM_CY "Memory allocation for cylinder failed\n"
+# define MEM_CO "Memory allocation for cone failed\n"
+
 
 /* Errors of mlx */
 # define MLX_INIT "Memory allocation for mlx connection failed\n"

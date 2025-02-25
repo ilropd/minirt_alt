@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/26 14:55:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/20 21:10:24 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:59:26 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ void	set_cylinder(t_item *obj, t_cylinder *cylinder)
 
 void	set_cone(t_item *obj, t_cone *cone)
 {
-	obj->id = CO;             // Asegúrate de definir la macro CO para el cono.
+	obj->id = CO;
 	obj->type.co = cone;
 	obj->free_obj = free_cone;
 	obj->update_cam = update_cone;

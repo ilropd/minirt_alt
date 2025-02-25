@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/22 15:19:36 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/18 15:17:53 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:59:26 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,11 +25,13 @@ void	update_cam_vectors(t_scene *scene);
 int		init_cylinder(t_scene *scene);
 int		init_plane(t_scene *scene);
 int		init_sphere(t_scene *scene);
+int		init_cone(t_scene *scene);
 
 /* set_figures.c */
 void	set_sphere(t_item *obj, t_sphere *sphere);
 void	set_plane(t_item *obj, t_plane *plane);
 void	set_cylinder(t_item *obj, t_cylinder *cylinder);
+void	set_cone(t_item *obj, t_cone *cone);
 
 /* init_unique.c */
 int		init_camera(t_scene *scene);
@@ -40,4 +42,5 @@ int		init_ambient(t_scene *scene);
 void	update_sphere(t_scene *sc, t_item *item);
 void	update_plane(t_scene *sc, t_item *item);
 void	update_cylinder(t_scene *sc, t_item *item);
+void	update_cone(t_scene *sc, t_item *item);
 #endif

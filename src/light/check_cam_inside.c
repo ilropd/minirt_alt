@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   check_cam_inside.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/17 15:34:22 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 21:51:00 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:24:40 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,5 +62,26 @@ void	cam_inside_cylinder(t_scene *scene, t_item *item)
 	cylinder = item->type.cy;
 	if (is_perpendicular(scene, cylinder) == 1
 		&& light_inside_cylinder(scene, cylinder) == 0)
+		scene->cam.is_inside = 1;
+}
+
+void	cam_inside_cone(t_scene *scene, t_item *item)
+{
+	t_cone	*cone;
+	t_vector	d;
+	double		proj;
+	double		dist_to_axis;
+	double		allowed_radius;
+
+	if (!item || !item->type.co)
+		return;
+	cone = item->type.co;
+	d = vector_sub_dir(&scene->cam.center, &cone->vertex);
+	proj = vector_dot_prod(&d, &cone->orient);
+	if (proj < 0 || proj > cone->height)
+		return;
+	dist_to_axis = sqrt(vector_dot_prod(&d, &d) - proj * proj);
+	allowed_radius = (proj * cone->radius) / cone->height;
+	if (dist_to_axis <= allowed_radius && light_inside_cone(scene, cone) == 0)
 		scene->cam.is_inside = 1;
 }

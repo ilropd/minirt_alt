@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/12 16:18:10 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/19 12:50:46 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:43:57 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,5 +37,9 @@ double	plane_sh_intersection(t_item *item, t_ray *ray);
 /* sphere_intersection.c */
 void	sphere_intersection(t_scene *scene, t_item *item, t_ray *ray);
 double	sphere_sh_intersection(t_item *item, t_ray *ray);
+
+/* cone_intersection.c */
+void	cone_intersection(t_scene *scene, t_item *item, t_ray *ray);
+double	cone_sh_intersection(t_item *item, t_ray *ray);
 
 #endif

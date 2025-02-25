@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/12 15:10:33 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/20 19:47:43 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/25 21:57:14 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,36 @@ int	init_cylinder(t_scene *scene)
 	vector_set(&cylinder->cam_cylinder, 0, 0, 0);
 	set_color(scene, &cylinder->color, 9);
 	print_cylinder_init(cylinder);
+	return (0);
+}
+
+int	init_cone(t_scene *scene)
+{
+	t_cone	*cone;
+	t_item	*obj;
+
+	obj = add_obj(scene->objs, scene);
+	cone = malloc(sizeof(t_cone));
+	if (!cone)
+		return (printf("%s%s", ERROR, MEM_CO), 1);
+	if (check_cone(scene->table))
+		error_exit_print(ARGS_CONE);
+	set_cone(obj, cone);
+	cone->type = scene->table[0];
+	if (!cone->type)
+		return (printf("%s%s", ERROR, MEM_CO), 1);
+	vector_set_table(&cone->vertex, scene, 1);
+	vector_set_table(&cone->orient, scene, 4);
+	vector_normalize(&cone->orient);
+	cone->angle = ft_atof(scene->table[7]);
+	cone->height = ft_atof(scene->table[8]);
+	cone->radius = cone->height * tan(cone->angle * M_PI / 180);
+	vector_set(&cone->cam_cone, 0, 0, 0);
+	set_color(scene, &cone->color, 9);
+	printf("Cone Initialized: Type: %s, Vertex: %f | %f | %f, Orient: %f | %f | %f, Angle: %f, Height: %f, Radius: %f, Color: (%u, %u, %u)\n",
+		cone->type, cone->vertex.x, cone->vertex.y, cone->vertex.z,
+		cone->orient.x, cone->orient.y, cone->orient.z, cone->angle,
+		cone->height, cone->radius, cone->color[0],
+		cone->color[1], cone->color[2]);
 	return (0);
 }
