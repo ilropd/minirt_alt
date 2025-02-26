@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   vector_prod.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: irozhkov <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/05 17:37:17 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 14:27:42 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:07:07 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,4 +39,11 @@ t_vector	vector_cp_dir(const t_vector *vec1, const t_vector *vec2)
 	res.y = (vec1->z * vec2->x) - (vec1->x * vec2->z);
 	res.z = (vec1->x * vec2->y) - (vec1->y * vec2->x);
 	return (res);
+}
+
+void	vector_cross(const t_vector *a, const t_vector *b, t_vector *res)
+{
+	res->x = a->y * b->z - a->z * b->y;
+	res->y = a->z * b->x - a->x * b->z;
+	res->z = a->x * b->y - a->y * b->x;
 }

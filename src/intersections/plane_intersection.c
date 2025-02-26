@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 19:18:50 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/19 12:50:06 by irozhkov         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:07:15 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,43 @@ static void	get_pl_normal(t_ray *ray, t_plane *pl, double dist)
 	vector_normalize(&ray->normal);
 }
 
+static int	get_checker_color(t_plane *pl, t_vector hit_p)
+{
+	t_vector	diff;
+	t_vector	u;
+	t_vector	v;
+	t_vector	arbitrary;
+	double		local_u;
+	double		local_v;
+	double		tile_size;
+	int			tile_u;
+	int			tile_v;
+
+	diff = vector_sub_dir(&hit_p, &pl->center);
+
+	if (fabs(pl->orient.y) < 0.999)
+		arbitrary = (t_vector){0, 1, 0};
+	else
+		arbitrary = (t_vector){1, 0, 0};
+
+	vector_cross(&pl->orient, &arbitrary, &u);
+	vector_normalize(&u);
+	vector_cross(&pl->orient, &u, &v);
+	vector_normalize(&v);
+
+	local_u = vector_dot_prod(&diff, &u);
+	local_v = vector_dot_prod(&diff, &v);
+
+	tile_size = 60.0;
+	tile_u = (int)floor(local_u / tile_size);
+	tile_v = (int)floor(local_v / tile_size);
+
+	if (((tile_u + tile_v) % 2) == 0)
+		return ((pl->color[0] << 16) | (pl->color[1] << 8) | (pl->color[2]));
+	else
+		return (0x000000);
+}
+
 void	plane_intersection(t_scene *scene, t_item *item, t_ray *ray)
 {
 	int		color;
@@ -28,6 +65,7 @@ void	plane_intersection(t_scene *scene, t_item *item, t_ray *ray)
 	double	dist;
 	t_plane	*plane;
 
+	(void)scene;
 	plane = item->type.pl;
 	denom = vector_dot_prod(&ray->v_ray, &plane->orient);
 	if (fabs(denom) >= 1e-6)
@@ -38,7 +76,7 @@ void	plane_intersection(t_scene *scene, t_item *item, t_ray *ray)
 		{
 			ray->hit = 1;
 			get_pl_normal(ray, plane, dist);
-			color = light_calc(scene, ray, plane->color);
+			color = get_checker_color(plane, ray->hit_p);
 			check_ray(ray, color, dist, PL);
 		}
 	}
@@ -63,3 +101,4 @@ double	plane_sh_intersection(t_item *item, t_ray *ray)
 		return (MAXFLOAT);
 	return (dist);
 }
+

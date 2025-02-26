@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/02 13:38:50 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/17 18:07:33 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/26 20:07:12 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void		vector_normalize(t_vector *vec);
 
 /* vector_prod.c */
 double		vector_dot_prod(t_vector *vec1, t_vector *vec2);
+void		vector_cross(const t_vector *a, const t_vector *b, t_vector *res);
 t_vector	*vector_cross_prod(t_vector *vec1, t_vector *vec2);
 t_vector	vector_cp_dir(const t_vector *vec1, const t_vector *vec2);
 
