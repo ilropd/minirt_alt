@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/09/09 13:54:43 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/13 20:17:25 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/02/26 08:08:18 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,8 @@ int	arg_counter(char **table)
 		|| (ft_strcmp(table[0], "C") == 0 && i != 7)
 		|| (ft_strcmp(table[0], "sp") == 0 && i != 7)
 		|| (ft_strcmp(table[0], "pl") == 0 && i != 9)
-		|| (ft_strcmp(table[0], "cy") == 0 && i != 11))
+		|| (ft_strcmp(table[0], "cy") == 0 && i != 11)
+		|| (ft_strcmp(table[0], "co") == 0 && i != 11))
 		flag = 1;
 	return (flag);
 }
