@@ -6,7 +6,7 @@
 /*   By: jpancorb <jpancorb@student.42barcel>       +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/15 19:18:50 by irozhkov          #+#    #+#             */
-/*   Updated: 2025/02/26 20:07:15 by jpancorb         ###   ########.fr       */
+/*   Updated: 2025/03/03 20:02:50 by jpancorb         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,18 +65,22 @@ void	plane_intersection(t_scene *scene, t_item *item, t_ray *ray)
 	double	dist;
 	t_plane	*plane;
 
-	(void)scene;
 	plane = item->type.pl;
 	denom = vector_dot_prod(&ray->v_ray, &plane->orient);
 	if (fabs(denom) >= 1e-6)
 	{
 		dist = (vector_dot_prod(&plane->center, &plane->orient)
-				- vector_dot_prod(&plane->cam_plane, &plane->orient)) / denom;
+				- vector_dot_prod(&ray->ray_orgn, &plane->orient)) / denom;
 		if (dist > 0)
 		{
 			ray->hit = 1;
 			get_pl_normal(ray, plane, dist);
-			color = get_checker_color(plane, ray->hit_p);
+			int base_color = get_checker_color(plane, ray->hit_p);
+			unsigned int checker_color[3];
+			checker_color[0] = (base_color >> 16) & 0xFF;  // Rojo
+			checker_color[1] = (base_color >> 8) & 0xFF;   // Verde
+			checker_color[2] = base_color & 0xFF;          // Azul
+			color = light_calc(scene, ray, checker_color);
 			check_ray(ray, color, dist, PL);
 		}
 	}
